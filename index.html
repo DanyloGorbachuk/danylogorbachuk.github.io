@@ -1,0 +1,2546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danylo Gorbachuk - Game Designer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f7fafc;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #2d3748;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btn.active {
+            background: #2d3748;
+            color: white;
+        }
+
+        .nav-btn:not(.active) {
+            background: transparent;
+            color: #4a5568;
+        }
+
+        .nav-btn:not(.active):hover {
+            background: #f7fafc;
+            color: #2d3748;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #2d3748;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #2d3748;
+            border-radius: 2px;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-title {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.75rem;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.8) 100%);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+        }
+
+        .project-card:hover .project-title {
+            transform: translateY(-60px);
+        }
+
+        .project-description {
+            color: white;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-top: 0.5rem;
+        }
+
+        /* Project Page Styles */
+        .project-header {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(45, 55, 72, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #4a5568 0%, #718096 100%);
+            transform: translateX(-2px);
+        }
+
+        .back-button::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+
+        .project-page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .project-subtitle {
+            font-size: 1.25rem;
+            color: #4a5568;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .project-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .project-detail-item {
+            background: #f7fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .project-detail-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #4a5568;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-detail-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+
+        .project-link-btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .project-link-btn.primary {
+            background: #2d3748;
+            color: white;
+            border: 2px solid #2d3748;
+        }
+
+        .project-link-btn.primary:hover {
+            background: #4a5568;
+            transform: translateY(-2px);
+        }
+
+        .project-link-btn.secondary {
+            background: transparent;
+            color: #2d3748;
+            border: 2px solid #2d3748;
+        }
+
+        .project-link-btn.secondary:hover {
+            background: #2d3748;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Skills Section */
+        .skills-category {
+            margin-bottom: 3rem;
+        }
+
+        .skills-category h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            background: #2d3748;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            background: #2d3748;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .skill-info h4 {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.25rem;
+        }
+
+        .skill-bar {
+            width: 120px;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: #2d3748;
+            border-radius: 3px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .profile-section {
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 550px;
+            height: 824px;
+            border-radius: 16px;
+            margin: 0 auto 2rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            image-rendering: auto;
+            image-rendering: high-quality;
+            image-rendering: -webkit-optimize-contrast;
+        }
+
+        .profile-details {
+            text-align: left;
+        }
+
+        .profile-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .profile-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-top: 0.25rem;
+        }
+
+        .bio-section h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .bio-section p {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #2d3748;
+            background: transparent;
+            color: #2d3748;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-btn:hover {
+            background: #2d3748;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 4rem;
+        }
+
+        .info-cards-section {
+            background: #f7fafc;
+            padding: 3rem 0;
+        }
+
+        .info-cards-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .info-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .info-card p {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-card li {
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .info-card li::before {
+            content: '•';
+            color: #2d3748;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .skills-grid-footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card-button {
+            background: #2d3748;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .footer-copyright {
+            padding: 2rem 0;
+            text-align: center;
+            color: #4a5568;
+            background: white;
+        }
+
+        /* Challenge Item Styles */
+        .challenge-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f7fafc;
+            border-radius: 8px;
+            border-left: 4px solid #2d3748;
+        }
+
+        .challenge-item h4 {
+            color: #2d3748;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .challenge-item p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-page-title {
+                font-size: 2rem;
+            }
+
+            .skills-grid-footer {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Lightbox Modal Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            cursor: default;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            font-weight: 300;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .lightbox-close:hover {
+            color: #ccc;
+        }
+    </style>
+    
+    <script>
+        // Lightbox functionality
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" onclick="event.stopPropagation()">
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <h1 class="logo">Danylo Gorbachuk | Game Designer - Level Design & Systems</h1>
+            <nav class="nav-buttons">
+                <button class="nav-btn active" data-section="portfolio">Portfolio</button>
+                <button class="nav-btn" data-section="skills">Other Skills</button>
+                <button class="nav-btn" data-section="about">About Me</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section active">
+            <div class="content-card">
+                <h2 class="section-title">Personal Projects</h2>
+                <div class="portfolio-grid">
+                    <div class="project-card" data-project="apocalypse1866">
+                        <div class="project-image" style="background: url('assets/images/apocalypse/danylo-gorbachuk-apocalypse1866-card.png') center/cover;">
+                            <div class="project-overlay">
+                                <p class="project-description">
+                                    Top-down horde survival with wave-based combat. Progression systems and difficulty scaling create 15+ minutes of escalating gameplay.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-project="grimhold">
+                        <div class="project-image" style="background: url('assets/images/grimhold/danylo-gorbachuk-grimhold-card.png') center/cover;">
+                            <div class="project-title" style="background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 8px;">GRIMHOLD<br>ESCAPE</div>
+                            <div class="project-overlay">
+                                <p class="project-description">
+                                    First-person stealth prison escape with detailed lockpicking mechanics. Non-linear level design offering three distinct routes: parkour, ventilation, and stealth paths.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-project="cryostream">
+                        <div class="project-image" style="background: url('assets/images/cryostream/danylo-gorbachuk-cryostream-card.png') center/cover;">
+                            <div class="project-title" style="background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 8px;">CRYOSTREAM<br>FACILITY</div>
+                            <div class="project-overlay">
+                                <p class="project-description">
+                                    Third-person puzzle escape through abandoned research facility. Manipulate water flow to solve environmental puzzles across 14 facility sections.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-project="sagevsslime">
+                        <div class="project-image" style="background: url('assets/images/sagevsslime/danylo-gorbachuk-sagevsslime-card.png') center/cover;">
+                            <div class="project-overlay">
+                                <p class="project-description">
+                                    Competitive 2-player card battler with simultaneous reveals and tactical power-ups. Strategic prediction and counter-play using 18 unit cards with triggered effects.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-project="fuse">
+                        <div class="project-image" style="background: url('assets/images/fuse/danylo-gorbachuk-fuse-card.png') center/cover;">
+                            <div class="project-title" style="background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 8px;">FUSE</div>
+                            <div class="project-overlay">
+                                <p class="project-description">
+                                    Turn-based isometric puzzle game where burning fuses create time pressure. Push bombs, slide on ice, and use teleports across 10 levels.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Apocalypse 1866 Project Page -->
+        <section id="apocalypse1866" class="section">
+            <div class="content-card">
+                <!-- Project Banner -->
+                <div class="project-banner">
+                    <img src="assets/images/apocalypse/danylo-gorbachuk-apocalypse1866-banner.png" alt="Apocalypse 1866 Game Banner" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 2rem;">
+                </div>
+
+                <div class="project-header">
+                    <button class="back-button" onclick="showPortfolio()">Back to Portfolio</button>
+                    <h1 class="project-page-title">Apocalypse 1866</h1>
+                    <p class="project-subtitle">Top-Down Horde Survival - Wave Pacing & Difficulty Curves</p>
+                </div>
+
+                <div style="text-align: center; margin: 3rem 0;">
+                    <video 
+                        autoplay 
+                        loop 
+                        muted 
+                        playsinline
+                        style="width: 100%; max-width: 800px; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);"
+                        title="Apocalypse 1866 Gameplay Demonstration">
+                        <source src="assets/videos/danylo-gorbachuk-apocalypse1866-gameplay.mp4" type="video/mp4">
+                    </video>
+                    <p style="font-size: 0.9rem; color: #666; text-align: center; margin-top: 1rem; font-style: italic;">
+                        Gameplay demonstration showcasing final mechanics, level design, and survival systems in action
+                    </p>
+                </div>
+
+                <div class="project-details-grid">
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Engine</div>
+                        <div class="project-detail-value">Unreal Engine 5 (Nanite, Lumen)</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Development Time</div>
+                        <div class="project-detail-value">500+ Hours</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Team Size</div>
+                        <div class="project-detail-value">3 Person Project</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Focus</div>
+                        <div class="project-detail-value">Level Design & Survival Mechanics</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Documentation</div>
+                        <div class="project-detail-value">Confluence, JIRA, GDD (35+ pages)</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Version Control</div>
+                        <div class="project-detail-value">Perforce, Git workflows</div>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Project Overview</h3>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
+                        Apocalypse 1866 is a top-down horde survival game where players face escalating waves of enemies in a Western-inspired apocalyptic setting. As the primary designer, I was responsible for designing the progression systems, difficulty scaling, and wave-based combat that creates 15+ minutes of intensifying gameplay.
+                    </p>
+                    <p style="color: #4a5568; line-height: 1.7;">
+                        The main challenge was creating an upgrade system that stays engaging. I wanted tight gameplay where you make immediate tactical choices while planning long-term builds. Each run should feel different while still rewarding player skill.
+                    </p>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Design Evolution</h3>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                        <div style="background: #f7fafc; padding: 1.5rem; border-radius: 8px;">
+                            <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Initial Blockout Phase</h4>
+                            <video 
+                                autoplay 
+                                loop 
+                                muted 
+                                playsinline
+                                style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                                <source src="assets/images/apocalypse/danylo-gorbachuk-apocalypse1866-blockout.mp4" type="video/mp4">
+                            </video>
+                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6;">
+                                Early greybox layouts focusing on player flow and core survival mechanics. Simple geometry testing movement patterns and resource placement.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #f7fafc; padding: 1.5rem; border-radius: 8px;">
+                            <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Final Implementation</h4>
+                            <video 
+                                autoplay 
+                                loop 
+                                muted 
+                                playsinline
+                                style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                                <source src="assets/images/apocalypse/danylo-gorbachuk-apocalypse1866-final-level.mp4" type="video/mp4">
+                            </video>
+                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6;">
+                                Polished environment with atmospheric lighting, environmental storytelling elements, and optimized player traversal paths based on testing data.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="margin: 2rem 0;">
+                        <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Upgrade System UI Evolution</h4>
+                        <div style="display: flex; align-items: center; gap: 2rem; background: #f7fafc; padding: 1.5rem; border-radius: 8px;">
+                            <div style="flex: 1;">
+                                <video 
+                                    autoplay 
+                                    loop 
+                                    muted 
+                                    playsinline
+                                    style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 0.5rem;">
+                                    <source src="assets/images/apocalypse/danylo-gorbachuk-apocalypse1866-early-ui.mp4" type="video/mp4">
+                                </video>
+                                <p style="color: #666; font-size: 0.8rem; text-align: center;">Version 1.0 - Basic interface</p>
+                            </div>
+                            
+                            <div style="color: #2d3748; font-size: 2rem; font-weight: bold;">→</div>
+                            
+                            <div style="flex: 1;">
+                                <video 
+                                    autoplay 
+                                    loop 
+                                    muted 
+                                    playsinline
+                                    style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 0.5rem;">
+                                    <source src="assets/images/apocalypse/danylo-gorbachuk-apocalypse1866-final-ui.mp4" type="video/mp4">
+                                </video>
+                                <p style="color: #666; font-size: 0.8rem; text-align: center;">Version 3.2 - Polished interface</p>
+                            </div>
+                        </div>
+                        <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-top: 1rem;">
+                            Refined upgrade interface design through multiple iterations, improving visual hierarchy, iconography, and user experience flow. Enhanced presentation of weapon and ability upgrade options based on usability testing feedback.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Technical Implementation</h3>
+                    <div class="challenge-item">
+                        <h4>Challenge: Streamlining Upgrade Content Creation</h4>
+                        <p>Adding new upgrades required modifying Blueprint code each time, creating development bottlenecks and limiting the team's ability to rapidly iterate on upgrade balance and variety during playtesting phases.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h4>Solution: Data Table Architecture with Custom Structures</h4>
+                        <p>Designed data-driven upgrade architecture separating content definitions from core logic. The Upgrade Manager system reads designer-accessible data tables, enabling new weapons, abilities, and stat modifications through structured entries rather than code modifications. This technical design decision prioritized workflow efficiency and rapid iteration capability over implementation simplicity.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h4>Result: Improved Content Iteration Speed</h4>
+                        <p>System reduced upgrade implementation time and enabled faster content iteration during playtesting. New upgrade implementation and testing velocity increased by 200%, allowing the team to test multiple upgrade variations and balance adjustments without requiring Blueprint code changes for each modification.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Systems Design Architecture</h3>
+                    
+                    <div style="margin: 2rem 0;">
+                        <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Upgrade System Data Flow</h4>
+                        <div style="background: #f7fafc; padding: 2rem; border-radius: 8px; text-align: center;">
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                                <!-- Data Tables Layer -->
+                                <div style="background: #e2e8f0; padding: 1rem; border-radius: 6px; width: 100%; max-width: 600px;">
+                                    <h5 style="color: #2d3748; font-weight: 600; margin-bottom: 0.5rem;">Data Tables (Designer-Accessible)</h5>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; font-size: 0.8rem;">
+                                        <div style="background: white; padding: 0.5rem; border-radius: 4px;">Weapon Stats</div>
+                                        <div style="background: white; padding: 0.5rem; border-radius: 4px;">Ability Types</div>
+                                        <div style="background: white; padding: 0.5rem; border-radius: 4px;">Upgrade Tiers</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Arrow Down -->
+                                <div style="color: #2d3748; font-size: 1.5rem; font-weight: bold;">↓</div>
+                                
+                                <!-- Upgrade Manager Layer -->
+                                <div style="background: #4a5568; color: white; padding: 1rem; border-radius: 6px; width: 100%; max-width: 400px;">
+                                    <h5 style="font-weight: 600; margin-bottom: 0.5rem;">Upgrade Manager Blueprint</h5>
+                                    <div style="font-size: 0.8rem;">Reads data tables → Validates combinations → Applies effects</div>
+                                </div>
+                                
+                                <!-- Arrow Down -->
+                                <div style="color: #2d3748; font-size: 1.5rem; font-weight: bold;">↓</div>
+                                
+                                <!-- Player Character Layer -->
+                                <div style="background: #2d3748; color: white; padding: 1rem; border-radius: 6px; width: 100%; max-width: 300px;">
+                                    <h5 style="font-weight: 600; margin-bottom: 0.5rem;">Player Character</h5>
+                                    <div style="font-size: 0.8rem;">Receives stat modifications + new abilities</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-top: 1rem;">
+                            Modular architecture separates content definition from implementation logic, enabling rapid iteration without Blueprint modifications. Each upgrade combination is validated through the Upgrade Manager before application to prevent conflicts.
+                        </p>
+                    </div>
+                    
+                    <div style="margin: 2rem 0;">
+                        <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Difficulty Curve Design</h4>
+                        <div style="background: #f7fafc; padding: 2rem; border-radius: 8px;">
+                            <div style="position: relative; height: 400px; background: white; border-radius: 8px; padding: 2rem;">
+                                <!-- Axes -->
+                                <div style="position: relative; width: 100%; height: 100%; border-left: 3px solid #2d3748; border-bottom: 3px solid #2d3748;">
+                                    
+                                    <!-- Y-axis label -->
+                                    <div style="position: absolute; left: -80px; top: 50%; transform: rotate(-90deg); font-size: 1rem; font-weight: 600; color: #2d3748; white-space: nowrap;">Challenge Level</div>
+                                    
+                                    <!-- X-axis label -->
+                                    <div style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); font-size: 1rem; font-weight: 600; color: #2d3748;">Session Time (minutes)</div>
+                                    
+                                    <!-- Actual difficulty curve with ups and downs -->
+                                    <svg style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                        <!-- More realistic difficulty curve with small ups and downs -->
+                                        <path d="M 0 88 L 5 86 L 8 88 L 12 85 L 18 81 L 22 83 L 28 78 L 35 72 L 40 70 L 45 65 L 50 58 L 55 56 L 60 50 L 65 45 L 70 42 L 75 36 L 80 30 L 85 25 L 90 18 L 95 15 L 100 10" 
+                                              stroke="#e53e3e" 
+                                              stroke-width="2" 
+                                              fill="none"/>
+                                    </svg>
+                                    
+                                    <!-- Key upgrade moments positioned ON the curve line -->
+                                    <div style="position: absolute; bottom: 12%; left: 8%; width: 12px; height: 12px; background: #e53e3e; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"></div>
+                                    <div style="position: absolute; bottom: 19%; left: 28%; width: 12px; height: 12px; background: #3182ce; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"></div>
+                                    <div style="position: absolute; bottom: 42%; left: 50%; width: 12px; height: 12px; background: #38a169; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"></div>
+                                    <div style="position: absolute; bottom: 64%; left: 75%; width: 12px; height: 12px; background: #d69e2e; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"></div>
+                                    <div style="position: absolute; bottom: 82%; left: 90%; width: 12px; height: 12px; background: #805ad5; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"></div>
+                                    
+                                    <!-- Time markers -->
+                                    <div style="position: absolute; bottom: -25px; left: 8%; font-size: 0.8rem; color: #718096;">3</div>
+                                    <div style="position: absolute; bottom: -25px; left: 28%; font-size: 0.8rem; color: #718096;">5</div>
+                                    <div style="position: absolute; bottom: -25px; left: 50%; font-size: 0.8rem; color: #718096;">8</div>
+                                    <div style="position: absolute; bottom: -25px; left: 75%; font-size: 0.8rem; color: #718096;">11</div>
+                                    <div style="position: absolute; bottom: -25px; left: 90%; font-size: 0.8rem; color: #718096;">15</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Legend -->
+                            <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; font-size: 0.85rem;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 10px; height: 10px; background: #e53e3e; border-radius: 50%;"></div>
+                                    Tutorial Complete
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 10px; height: 10px; background: #3182ce; border-radius: 50%;"></div>
+                                    First Weapon Upgrade
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 10px; height: 10px; background: #38a169; border-radius: 50%;"></div>
+                                    Elemental Powers
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 10px; height: 10px; background: #d69e2e; border-radius: 50%;"></div>
+                                    Advanced Mechanics
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 10px; height: 10px; background: #805ad5; border-radius: 50%;"></div>
+                                    Mastery Phase
+                                </div>
+                            </div>
+                        </div>
+                        <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-top: 1rem;">
+                            Difficulty curve carefully balanced to maintain flow state throughout 15-minute sessions. Challenge increases proportionally with player skill acquisition, keeping players engaged in the optimal zone between boredom and frustration. Strategic upgrade placement creates consistent progression pacing.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Core Design Challenge</h3>
+                    <div class="challenge-item">
+                        <h4>Core Problem: Player Retention Through Meaningful Progression</h4>
+                        <p>Testing showed 65% of players didn't replay after beating the game once. The survival loop worked fine, but there wasn't enough reason to come back. Players wanted more variety and progression between runs.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h4>Design Solution: Progression System with Player Choice</h4>
+                        <p>Developed a multi-tiered upgrade system that combines immediate tactical benefits with long-term planning. Players choose from branching upgrade paths that fundamentally alter gameplay style, weapon effectiveness, and survival strategies. Each upgrade decision creates meaningful trade-offs so no single "optimal" path dominates.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h4>Validation Through Data</h4>
+                        <p>Implemented telemetry tracking to measure engagement metrics across 25+ playtesting sessions. Post-implementation data showed 78% completion rate improvement and player satisfaction scores increased from 6.2/10 to 8.4/10 for progression systems, validating the design's effectiveness in addressing core retention challenges.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Playtesting Iterations & Refinement</h3>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 2rem;">
+                        The project went through extensive iteration based on playtester feedback and telemetry data. Below are six major refinements that had measurable impact on player experience:
+                    </p>
+                    
+                    <div class="challenge-item">
+                        <h4>Iteration #1: Tutorial Level Design (Saloon)</h4>
+                        <p><strong>Problem:</strong> Initial tutorial was slow and introduced mechanics inside the main level. This created awkward pacing and left players unprepared for early difficulty spikes.</p>
+                        <p><strong>Solution:</strong> Created a dedicated tutorial level set in a saloon (under 1 minute long). Opens with player sitting at the bar, piano playing in the background. Then glass breaks, walls explode, and a zombie appears right in front of them. Time slows down for their first shot. The level forces players to use each mechanic (shoot, move, dash, secondary, ultimate) before they can progress, teaching everything through scenarios instead of text prompts.</p>
+                        <p><strong>Result:</strong> Players entered the main level already comfortable with controls. We could ramp difficulty faster without overwhelming them. Early dropout decreased noticeably.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Iteration #2: Upgrade Selection Timing</h4>
+                        <p><strong>Problem:</strong> Upgrade screen appeared instantly when players earned upgrades. This caused accidental clicks since players were still in combat mode.</p>
+                        <p><strong>Solution:</strong> Added a 0.2-second delay before selections became active. We A/B tested this with 10+ playtesters, trying values between 0.1s and 0.5s to find the sweet spot.</p>
+                        <p><strong>Result:</strong> Completely eliminated accidental upgrade choices. Player feedback changed from frustration ("I lost my upgrade!") to satisfaction with deliberate selection.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Iteration #3: Combat Re-Entry Flow</h4>
+                        <p><strong>Problem:</strong> Players were often surrounded by enemies when the upgrade screen appeared. Coming back to combat after selecting upgrades felt disorienting and punishing. Some players even forgot how dangerous their situation was while browsing upgrades.</p>
+                        <p><strong>Solution:</strong> Made upgrade selection trigger a defensive shockwave that throws nearby enemies back and slows them by 50% for 1.5 seconds. A/B tested the timing and slow percentage to balance between "too weak to help" and "removes all danger."</p>
+                        <p><strong>Result:</strong> Smoothed the transition between upgrade selection and combat. Players stayed engaged with the progression system without feeling punished for taking time to choose.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Iteration #4: Wave Pacing Refinement</h4>
+                        <p><strong>Problem:</strong> Difficulty spikes were inconsistent. Some sections felt too easy (boring), others too punishing (frustrating). Early telemetry data showed erratic engagement curves instead of smooth flow.</p>
+                        <p><strong>Solution:</strong> Went through 10+ iterations adjusting spawn rates and enemy type composition. Analyzed session recordings to identify problem areas. A/B tested different difficulty curves to find optimal escalation.</p>
+                        <p><strong>Result:</strong> Got consistent flow state throughout 15-minute sessions. Player engagement metrics showed smooth curves instead of spikes and drops.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Iteration #5: Upgrade Balance & Build Variety</h4>
+                        <p><strong>Problem:</strong> Telemetry showed uneven upgrade distribution. Certain upgrades dominated player picks while others went unused, which limited strategic variety.</p>
+                        <p><strong>Solution:</strong> Rebalanced upgrade effectiveness through multiple testing cycles. Made weaker upgrades more appealing while keeping powerful synergy combinations intact (we wanted to reward players who optimized their builds).</p>
+                        <p><strong>Result:</strong> Upgrade picks became more evenly distributed. Build variety increased while still maintaining power fantasy moments for players who planned their synergies carefully.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Iteration #6: Player Feedback Systems</h4>
+                        <p><strong>Problem:</strong> Players felt uncertain about ability activation and impact. Satisfaction scores were low because of weak feedback. Players literally couldn't tell if their actions registered.</p>
+                        <p><strong>Solution:</strong> Spent multiple sprints focused purely on audio and visual feedback. Added screen shake, impact sounds, particle effects, and UI confirmations for all player actions. A/B tested different intensity levels to avoid overwhelming players.</p>
+                        <p><strong>Result:</strong> Player satisfaction with moment-to-moment gameplay increased substantially. Combat felt more responsive and impactful, which directly improved enjoyment scores.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Key Design Contributions</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Architected scalable upgrade system documented in 12-page technical specification with UML diagrams
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Designed and implemented complete weapon system including shotgun mechanics and elemental abilities (ice/lightning/fire bullets, elemental bombs, movement mechanics)
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Created tutorial level (Saloon) featuring immersive learning through environmental design - sub-60 second completion teaching core mechanics without text tutorials
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Led bi-weekly design reviews using JIRA sprint methodology with cross-functional 3-person team
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Implemented data-driven weapon balancing based on telemetry from 25+ playtesting sessions
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Collaborated with team members using version control workflows to implement 15+ upgrade variations
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Identified and resolved player frustration points through systematic playtesting - corrected hitbox issues, false affordances, and counterintuitive mechanics resulting in improved player satisfaction
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Designed core gameplay loop with smooth tutorial-to-gameplay flow
+                        </li>
+                    
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://9livesdev.itch.io/apocalypse-1866" target="_blank" class="project-link-btn primary">Play on Itch.io</a>
+                    <a href="https://youtu.be/gE_vl1HTUhI" target="_blank" class="project-link-btn secondary">Watch Trailer</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grimhold Escape Project Page -->
+        <section id="grimhold" class="section">
+            <div class="content-card">
+                <div class="project-header">
+                    <button class="back-button" onclick="showPortfolio()">Back to Portfolio</button>
+                    <h1 class="project-page-title">Grimhold Escape</h1>
+                    <p class="project-subtitle">First-Person Stealth Prison Escape - Non-Linear Level Design & Tension-Focused Mechanics</p>
+                </div>
+
+                <div style="text-align: center; margin: 3rem 0;">
+                    <video 
+                        autoplay 
+                        loop 
+                        muted 
+                        playsinline
+                        style="width: 100%; max-width: 800px; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);"
+                        title="Grimhold Escape Gameplay Demonstration">
+                        <source src="assets/videos/danylo-gorbachuk-grimhold-gameplay.mp4" type="video/mp4">
+                    </video>
+                    <p style="font-size: 0.9rem; color: #666; text-align: center; margin-top: 1rem; font-style: italic;">
+                        Gameplay demonstration showcasing stealth mechanics, lockpicking system, and multiple escape routes
+                    </p>
+                    <p style="font-size: 0.85rem; color: #999; text-align: center; margin-top: 0.5rem; font-style: italic;">
+                        Some gameplay sequences accelerated for demonstration purposes
+                    </p>
+                </div>
+
+                <div class="project-details-grid">
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Engine</div>
+                        <div class="project-detail-value">Unreal Engine 5</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Development Time</div>
+                        <div class="project-detail-value">240 Hours</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Team Size</div>
+                        <div class="project-detail-value">Solo Project</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Focus</div>
+                        <div class="project-detail-value">Mechanics Design & Non-Linear Levels</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Genre</div>
+                        <div class="project-detail-value">Stealth / Immersive Sim</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Playtesting</div>
+                        <div class="project-detail-value">10 Testers, Multiple Iterations</div>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Project Overview</h3>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
+                        Grimhold Escape is a first-person stealth game inspired by titles like Dishonored and Thief, where you escape from a prison using cunning, stealth, and skill. The project's core challenge was designing a level that offers three distinctly different experiences while maintaining cohesive design principles and teaching players mechanics organically through environmental design.
+                    </p>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
+                        As a 1-month solo blockout prototype, the project focused on core level design and gameplay validation without final art assets. This approach prioritized rapid iteration and mechanical testing, allowing faster prototyping to determine what worked before committing to visual polish. I designed and implemented a lockpicking mechanic building on genre conventions, adding continuous maintenance as a stressor to heighten tension during stealth gameplay.
+                    </p>
+                    <p style="color: #4a5568; line-height: 1.7;">
+                        This mechanic, combined with a non-linear prison environment where player choice drives the experience, creates distinct gameplay paths. Through multiple playtesting sessions with 10 participants, I gathered data on route preferences, completion times, and player behavior to refine the design and validate the three-path approach.
+                    </p>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Lockpicking Mechanic Design</h3>
+                    
+                    <div style="background: #f7fafc; padding: 2rem; border-radius: 8px; margin: 2rem 0;">
+                        <video 
+                            autoplay 
+                            loop 
+                            muted 
+                            playsinline
+                            style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; margin: 0 auto 1.5rem; display: block;">
+                            <source src="assets/images/grimhold/danylo-gorbachuk-grimhold-lockpick.mp4" type="video/mp4">
+                        </video>
+                        
+                        <p style="color: #4a5568; font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                            Building on established Skyrim/Fallout lockpicking systems, this mechanic introduces continuous maintenance as a stressor. Two bobby pins rotate automatically, requiring players to counter-rotate and maintain the sweet spot rather than simply finding it once. This sustained engagement creates meaningful tension during stealth scenarios.
+                        </p>
+                        
+                        <div style="border-top: 2px solid #e2e8f0; padding-top: 1.5rem; margin-top: 1.5rem;">
+                            <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 0.75rem;">Progressive Difficulty</h4>
+                            <p style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">
+                                Difficulty scales through tighter error margins and increased pin count. Tutorial lock in starting cell teaches basics. Prison safe features 3-pin configuration, requiring players to maintain multiple sweet spots simultaneously, intensifying the stressor effect.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Design Challenge: Static Mechanics Lack Tension</h4>
+                        <p>Traditional lockpicking mechanics in stealth games often feel like brief interruptions rather than meaningful risk moments. Once players find the correct position, the challenge ends - removing tension during the most vulnerable moment when guards could discover them. The goal was evolving this established mechanic to maintain atmospheric pressure throughout the interaction.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h4>Solution: Continuous Maintenance as Environmental Stressor</h4>
+                        <p>By requiring sustained player focus to maintain pin positions while they actively try to rotate away, lockpicking becomes a persistent stressor that heightens immersion. You constantly balance your attention between the lock mechanism and potential guard threats, creating authentic risk/reward decisions: "Do I attempt this lock with guards nearby, or find another route?" The continuous input requirement transforms a static puzzle into a tension-building mechanic that reinforces the stealth atmosphere.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h4>Validation: Measurable Skill Development</h4>
+                        <p>Playtesting data showed clear skill improvement curves across 10 participants. First lock attempts averaged 18 seconds, while experienced players completed similar locks in 6-8 seconds by session end. Players specifically reported the mechanic felt skill-based rather than arbitrary, with the continuous maintenance creating sustained tension without frustration. This validated the stressor approach as both engaging and fair.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Non-Linear Level Design: Three Paths</h3>
+                    
+                    
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0;">
+                        <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #e53e3e;">
+                            <h4 style="color: #e53e3e; font-weight: 700; margin-bottom: 0.75rem;">🏃 Parkour Route</h4>
+                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+                                Dynamic movement-focused path across prison rooftops. Emphasizes timing, spatial awareness, and risk-taking.
+                            </p>
+                            <ul style="list-style: none; padding: 0; margin: 0;">
+                                <li style="color: #4a5568; font-size: 0.85rem; margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">•</span> Fewest locks required
+                                </li>
+                                <li style="color: #4a5568; font-size: 0.85rem; margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">•</span> High visibility risk
+                                </li>
+                                <li style="color: #4a5568; font-size: 0.85rem; margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">•</span> Fastest completion
+                                </li>
+                                <li style="color: #4a5568; font-size: 0.85rem; padding-left: 1rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">•</span> Rewards bold players
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #3182ce;">
+                            <h4 style="color: #3182ce; font-weight: 700; margin-bottom: 0.75rem;">🔍 Ventilation Route</h4>
+                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+                                Secret path through air ducts above the prison. Players spectate the horror below while navigating claustrophobic spaces.
+                            </p>
+                            <ul style="list-style: none; padding: 0; margin: 0;">
+                                <li style="color: #4a5568; font-size: 0.85rem; margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">•</span> Safest from guards
+                                </li>
+                                <li style="color: #4a5568; font-size: 0.85rem; margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">•</span> Environmental storytelling
+                                </li>
+                                <li style="color: #4a5568; font-size: 0.85rem; margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">•</span> Moderate completion time
+                                </li>
+                                <li style="color: #4a5568; font-size: 0.85rem; padding-left: 1rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">•</span> Rewards exploration
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #805ad5;">
+                            <h4 style="color: #805ad5; font-weight: 700; margin-bottom: 0.75rem;">🤫 Stealth Route</h4>
+                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+                                Traditional stealth path through prison corridors. Most doors to unlock, most guards to avoid. Pure stealth mastery.
+                            </p>
+                            <ul style="list-style: none; padding: 0; margin: 0;">
+                                <li style="color: #4a5568; font-size: 0.85rem; margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">•</span> Most locks to pick
+                                </li>
+                                <li style="color: #4a5568; font-size: 0.85rem; margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">•</span> Highest guard density
+                                </li>
+                                <li style="color: #4a5568; font-size: 0.85rem; margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">•</span> Slowest completion
+                                </li>
+                                <li style="color: #4a5568; font-size: 0.85rem; padding-left: 1rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">•</span> Rewards patience
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="margin: 3rem 0;">
+                        <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Level Pacing & Flow Design</h4>
+                        <div style="background: #f7fafc; padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+                            <img 
+                                src="assets/images/grimhold/danylo-gorbachuk-grimhold-level-pacing.png" 
+                                alt="Grimhold Level Pacing Flowchart"
+                                onclick="openLightbox('assets/images/grimhold/danylo-gorbachuk-grimhold-level-pacing.png')"
+                                style="width: 100%; max-width: 1200px; height: auto; border-radius: 8px; margin: 0 auto; display: block; cursor: pointer; transition: opacity 0.2s;"
+                                onmouseover="this.style.opacity='0.8'"
+                                onmouseout="this.style.opacity='1'">
+                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-top: 1rem; text-align: center; font-style: italic;">
+                                Level pacing flowchart showing progression, time estimates, and focal points across all three routes<br>
+                                <span style="color: #718096; font-size: 0.85rem;">(Click to enlarge)</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="margin: 3rem 0;">
+                        <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Mechanic Progression: Introduce-Practice-Master</h4>
+                        <div style="background: #f7fafc; padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+                            <img 
+                                src="assets/images/grimhold/danylo-gorbachuk-grimhold-ipm-chart.png" 
+                                alt="Grimhold IPM Chart"
+                                onclick="openLightbox('assets/images/grimhold/danylo-gorbachuk-grimhold-ipm-chart.png')"
+                                style="width: 100%; max-width: 1200px; height: auto; border-radius: 8px; margin: 0 auto; display: block; cursor: pointer; transition: opacity 0.2s;"
+                                onmouseover="this.style.opacity='0.8'"
+                                onmouseout="this.style.opacity='1'">
+                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-top: 1rem; text-align: center; font-style: italic;">
+                                IPM chart demonstrating how core mechanics are taught and reinforced across different paths<br>
+                                <span style="color: #718096; font-size: 0.85rem;">(Click to enlarge)</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Design Philosophy: Three Unique Experiences</h4>
+                        <p>Rather than creating "easy/medium/hard" variants of the same path, the goal was designing three fundamentally different gameplay experiences that appeal to different player archetypes. Each route needed distinct pacing, risk/reward balance, and skill requirements to encourage replayability and player expression.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Playtesting Data & Iteration</h3>
+                    
+                    <div style="background: #f7fafc; padding: 2rem; border-radius: 8px; margin: 2rem 0;">
+                        <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Route Distribution & Player Preferences</h4>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 3rem; font-weight: 800; color: #e53e3e;">40%</div>
+                                <div style="color: #4a5568; font-weight: 600;">Parkour Route</div>
+                                <div style="color: #718096; font-size: 0.85rem;">Fastest, Most Popular</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 3rem; font-weight: 800; color: #3182ce;">35%</div>
+                                <div style="color: #4a5568; font-weight: 600;">Stealth Route</div>
+                                <div style="color: #718096; font-size: 0.85rem;">Traditional Choice</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 3rem; font-weight: 800; color: #805ad5;">25%</div>
+                                <div style="color: #4a5568; font-weight: 600;">Ventilation Route</div>
+                                <div style="color: #718096; font-size: 0.85rem;">Hidden Discovery</div>
+                            </div>
+                        </div>
+                        <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6;">
+                            10 playtesters across multiple iterations. Data collected on route choice, completion time, death count, locks attempted, and player feedback. Distribution validates that all three routes provide viable, appealing options rather than one "optimal" path dominating player behavior.
+                        </p>
+                    </div>
+
+                    <div style="margin: 2rem 0;">
+                        <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Key Iterations Based on Testing</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div class="challenge-item" style="margin: 0;">
+                                <h4>Iteration #1: Tutorial Lock Placement</h4>
+                                <p><strong>Problem:</strong> 60% of players ignored locks entirely, taking only parkour route.</p>
+                                <p><strong>Solution:</strong> Moved tutorial lock to cell door as mandatory first interaction. This taught lockpicking before route choice, increasing lock engagement to 85% of players.</p>
+                            </div>
+                            <div class="challenge-item" style="margin: 0;">
+                                <h4>Iteration #2: Guard Patrol Timing</h4>
+                                <p><strong>Problem:</strong> Stealth route felt unfairly difficult with overlapping patrol patterns.</p>
+                                <p><strong>Solution:</strong> Adjusted patrol timing to create predictable windows. Player satisfaction for stealth route improved from 5.2/10 to 7.8/10.</p>
+                            </div>
+                            <div class="challenge-item" style="margin: 0;">
+                                <h4>Iteration #3: Ventilation Discoverability</h4>
+                                <p><strong>Problem:</strong> Only 15% of players found ventilation entrance naturally.</p>
+                                <p><strong>Solution:</strong> Added subtle environmental cues (draft effect, sound design). Discovery rate increased to 70% without explicit signposting.</p>
+                            </div>
+                            <div class="challenge-item" style="margin: 0;">
+                                <h4>Iteration #4: Lockpick Error Margins</h4>
+                                <p><strong>Problem:</strong> Players felt lockpicking was too punishing on first attempts.</p>
+                                <p><strong>Solution:</strong> Increased error margin by 15% for standard locks, kept safe lock challenging. Completion rate improved by 32%.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Technical Implementation</h3>
+                    
+                    <div class="challenge-item">
+                        <h4>Guard AI System</h4>
+                        <p>Implemented patrol-based AI with line-of-sight detection and audio proximity zones. Guards follow patrol paths with random pauses so they're not fully predictable. Detection uses cone vision with distance falloff and audio spheres for player noise.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h4>Dynamic Lockpicking System</h4>
+                        <p>Lockpicking uses Blueprint timelines for smooth pin rotation with configurable speed and direction. Sweet spot detection calculates angular difference between player input and target position, with tolerance margins defining difficulty. Multi-pin locks require simultaneous maintenance of multiple sweet spots, creating skill-based progression.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Key Design Contributions</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Designed lockpicking mechanic building on genre conventions with continuous maintenance as a stressor, creating sustained tension during stealth scenarios
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Created non-linear prison level with three distinct gameplay experiences appealing to different player archetypes
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Implemented tutorial lock placement teaching core mechanics organically through environmental design
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Conducted 10-person playtesting with multiple iterations, collecting quantitative data on route distribution and completion metrics
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Designed and implemented guard AI system with line-of-sight detection and audio proximity zones
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Iterated on difficulty balancing based on playtesting feedback, improving player satisfaction scores by 50%
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Completed full project from concept to playable build in one month as solo developer
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Created technical documentation and blueprint walkthrough video explaining system implementation
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://www.youtube.com/watch?v=FIOJu1kNMJQ" target="_blank" class="project-link-btn primary">Watch Full Walkthrough (7 min)</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cryostream Facility Project Page -->
+        <section id="cryostream" class="section">
+            <div class="content-card">
+                <div class="project-header">
+                    <button class="back-button" onclick="showPortfolio()">Back to Portfolio</button>
+                </div>
+
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h1 class="project-page-title">Cryostream Facility</h1>
+                    <p class="project-subtitle">Third-Person Environmental Puzzle Game - Water Mechanics & Spatial Design</p>
+
+                    <div style="margin: 2rem 0;">
+                        <h4 style="color: #2d3748; font-weight: 600; margin-bottom: 1rem;">Gameplay Highlights</h4>
+                        <video 
+                            autoplay
+                            muted
+                            loop
+                            style="width: 100%; max-width: 900px; height: auto; border-radius: 8px;"
+                            poster="assets/images/cryostream/danylo-gorbachuk-cryostream-thumbnail.png"
+                            title="Cryostream Facility Gameplay Highlights">
+                            <source src="assets/videos/cryostream/danylo-gorbachuk-cryostream-highlights.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="project-details-grid">
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Engine</div>
+                        <div class="project-detail-value">Unreal Engine 5</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Development Time</div>
+                        <div class="project-detail-value">220 Hours</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Team Size</div>
+                        <div class="project-detail-value">Solo Project</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Focus</div>
+                        <div class="project-detail-value">Environmental Puzzles & Water Mechanics</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Genre</div>
+                        <div class="project-detail-value">Third-Person Puzzle / Escape</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Playtesting</div>
+                        <div class="project-detail-value">Limited Testing, Iteration Focus</div>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Project Overview</h3>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
+                        Cryostream Facility is a third-person environmental puzzle game where players navigate an abandoned superconductivity research facility to retrieve classified documents. The core gameplay revolves around manipulating water flow using switches and propellers to solve spatial puzzles, move objects, and unlock new areas across 14 interconnected sections.
+                    </p>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
+                        As a 1-month solo blockout prototype, the project focused on core level design and gameplay validation without final art assets. This approach prioritized rapid iteration and mechanical testing to prove the water rerouting concept worked before committing to visual polish. The level takes players from forest exterior through facility cooling systems into the reactor core, culminating in a timed helicopter extraction escape.
+                    </p>
+                    <p style="color: #4a5568; line-height: 1.7;">
+                        <strong>Project Scope:</strong> Solo designer, 1 month development, 14 areas, 5 major puzzles, 10-18 minute estimated completion time
+                    </p>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Core Mechanic: Water Rerouting System</h3>
+                    
+                    <div class="challenge-item">
+                        <h4>Mechanic Design</h4>
+                        <p>The water rerouting mechanic allows players to manipulate water flow by activating switches and levers that control propellers. These propellers redirect water streams to push floating blocks, fill areas, or drain sections. You need to plan how water moves and time your actions carefully.</p>
+                        <p>The mechanic serves as both a navigational tool and environmental manipulation system. Water flow can move blocks onto pressure plates to unlock gates, raise water levels to reach higher areas, or redirect streams to access previously blocked pathways. Each puzzle requires understanding how water behaves as a physical force within the level's interconnected systems.</p>
+                    </div>
+
+                    <div style="margin: 2rem 0; text-align: center;">
+                        <h4 style="color: #2d3748; font-weight: 600; margin-bottom: 1rem;">Water Mechanics Demonstration</h4>
+                        <video 
+                            autoplay
+                            muted
+                            loop
+                            style="width: 100%; max-width: 900px; height: auto; border-radius: 8px;"
+                            poster="assets/images/cryostream/danylo-gorbachuk-cryostream-mechanics-thumbnail.png"
+                            title="Cryostream Water Mechanics Testing">
+                            <source src="assets/videos/cryostream/danylo-gorbachuk-cryostream-mechanics.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-top: 1rem; font-style: italic;">
+                            Water rerouting mechanic demonstrated in isolated testing environment
+                        </p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Player Interaction & Feedback</h4>
+                        <p><strong>Visual Feedback:</strong> Water flow direction changes are immediately visible through particle effects, moving water streams, and splashing at redirection points. Floating blocks bob and tilt naturally in water, while activated pressure plates visibly depress with connected doors showing clear unlocking animations.</p>
+                        <p><strong>Audio Feedback:</strong> Pulling levers triggers satisfying mechanical sounds followed by rushing water. Water movement intensity changes based on flow speed and direction. Objects moving through water create splashing and creaking sounds, while pressure plate activation produces distinct "click" sounds followed by door mechanisms grinding open.</p>
+                        <p><strong>Environmental Response:</strong> The facility's cooling systems respond dynamically to player actions. Water filling areas causes floating platforms to rise naturally, while drainage opens new pathways. Lighting effects and environmental cues guide players toward objectives as water reaches key triggers.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Secondary Mechanics</h4>
+                        <p><strong>Switches and Levers:</strong> Control water propellers to activate or deactivate water flow in specific areas. Some puzzles require toggling multiple switches in sequence to create correct water paths.</p>
+                        <p><strong>Floating Blocks:</strong> Buoyant objects moved by water current. Used to reach distant pressure plates, clear obstacles in water channels, or serve as moving platforms for the player to cross gaps.</p>
+                        <p><strong>Water-Activated Gates:</strong> Doors and pathways that open when water reaches specific levels or when blocks are positioned correctly on pressure mechanisms.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Level Design & Pacing</h3>
+                    
+                    <div style="margin: 3rem 0;">
+                        <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Level Pacing Flowchart</h4>
+                        <div style="background: #f7fafc; padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+                            <a href="assets/images/cryostream/danylo-gorbachuk-cryostream-level-pacing.png" target="_blank" style="display: block; cursor: pointer;">
+                                <img 
+                                    src="assets/images/cryostream/danylo-gorbachuk-cryostream-level-pacing.png" 
+                                    alt="Cryostream Facility Level Pacing Flowchart"
+                                    onclick="openLightbox('assets/images/cryostream/danylo-gorbachuk-cryostream-level-pacing.png')"
+                                    style="width: 100%; max-width: 1400px; height: auto; border-radius: 8px; margin: 0 auto; display: block; cursor: pointer; transition: opacity 0.2s;"
+                                    onmouseover="this.style.opacity='0.8'"
+                                    onmouseout="this.style.opacity='1'">
+                            </a>
+                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-top: 1rem; text-align: center; font-style: italic;">
+                                14-section progression flowchart showing Introduce-Practice-Master methodology across Forest entrance, Reactor facility, and Helicopter extraction finale<br>
+                                <span style="color: #718096; font-size: 0.85rem;">(Click to enlarge)</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Three-Act Structure</h4>
+                        <p><strong>Act 1 - Introduction (Forest & Gates, ~40 seconds):</strong> Players start in an overgrown forest exterior leading to facility gates. The tutorial introduces basic water rerouting in a simple outdoor environment before entering the facility proper.</p>
+                        <p><strong>Act 2 - Practice & Escalation (Facility & Reactor, ~12 minutes):</strong> Players progress through facility lobby, outdoor cooling systems, and three reactor halls. Each reactor section introduces new water routing challenges with increasing complexity. Practice modules reinforce mechanic mastery while layering additional puzzle elements.</p>
+                        <p><strong>Act 3 - Mastery Under Pressure (Emergency Exit & Extraction, ~3 minutes):</strong> After reactor destabilization, you navigate emergency tunnels and reach helicopter extraction. This section tests full mechanical mastery under time pressure with backtracking disabled, creating climactic urgency.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Introduce-Practice-Master Progression</h4>
+                        <p>Water rerouting mechanics follow clear IPM methodology. Section 5 (Outdoor Cooling System) introduces the core mechanic in isolation. Reactor Halls 1-3 (Sections 7-11) provide extended practice across varied scenarios, each adding complexity through environmental constraints and multi-step solutions. The final emergency escape (Sections 12-14) requires mastery as players apply all learned techniques under time pressure without opportunity for experimentation.</p>
+                        <p>The lobby serves as a central hub connecting different facility wings. After completing each section, players return to the lobby with new access unlocked, creating satisfying loops of progression. Sliding doors close behind players in reactor sections, preventing backtracking and maintaining forward momentum toward the facility core.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Puzzle Design Philosophy</h3>
+                    
+                    <div class="challenge-item">
+                        <h4>Spatial Reasoning & Environmental Logic</h4>
+                        <p>Puzzles emphasize spatial reasoning over trial-and-error. You observe water flow patterns, understand how floating blocks interact with currents, and plan multi-step solutions before execution. The facility's cooling system architecture creates logical connections between areas, where redirecting water in one location affects conditions downstream.</p>
+                        <p>Environmental storytelling replaces text tutorials. Broken pipes hint at water flow direction, rusted machinery suggests which systems are operational, and water damage patterns indicate previous flow paths. Players learn by observing the facility's deteriorated state rather than reading instructions.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Puzzle Progression</h4>
+                        <p>Early puzzles isolate single concepts (redirect water to fill one area). Mid-game puzzles combine multiple mechanics (redirect water to move block, then use block to reach lever that opens gate). Late-game puzzles require understanding entire system interactions (chain of water redirections affecting multiple areas simultaneously).</p>
+                        <p>The reactor sections each introduce environmental constraints. Reactor Hall 1 teaches basic routing with clear visual paths. Reactor Hall 2 adds timing challenges where water must reach multiple destinations in sequence. Reactor Hall 3 combines everything in larger, more complex routing networks that require mastery of the water system.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Environmental Wayfinding</h3>
+                    
+                    <div class="challenge-item">
+                        <h4>Subtle Navigation Cues</h4>
+                        <p>A major design focus was guiding players through the facility using environmental cues instead of UI elements or explicit markers. Light sources draw attention to important areas - emergency lighting indicates active paths while darker areas signal unexplored or currently inaccessible sections.</p>
+                        <p>Architectural framing creates natural sightlines toward objectives. Doorways, pipes, and facility infrastructure create visual channels directing player attention. Water flow itself becomes a wayfinding tool, as players follow streams to discover their sources or destinations.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Visual Language System</h4>
+                        <p>The facility uses consistent visual language to communicate interactivity. Switches have visible connection pipes leading to their controlled propellers. Gates show clear locking mechanisms that correspond to nearby pressure plates. Water-filled areas use color grading and particle density to indicate depth and flow strength.</p>
+                        <p>Blockout geometry communicates function through shape and position. Platforms at water level suggest they're meant to float. Switches positioned near visible mechanisms indicate immediate cause-and-effect relationships. This visual clarity was essential for a blockout prototype where final art couldn't convey information.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Technical Implementation</h3>
+                    
+                    <div class="challenge-item">
+                        <h4>Water Flow System</h4>
+                        <p>Designed physics-based water routing where propellers actively redirect particle-based water streams. Water flow affects floating objects through force application, creating natural movement that responds to current strength and direction. The system prioritizes visual clarity over simulation accuracy so players can predict how water will behave.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Floating Block Physics</h4>
+                        <p>Floating blocks use simplified buoyancy physics that balance realistic movement with puzzle predictability. Blocks respond to water current force while maintaining stable positioning once water stops flowing. This prevents frustrating physics glitches where blocks might float away unexpectedly while still feeling natural.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Switch & Propeller Connectivity</h4>
+                        <p>Created modular switch-propeller connection system enabling rapid puzzle iteration during development. Each switch visually connects to controlled propellers through color-coded pipes (visible in blockout). This system allowed quick prototyping of different puzzle configurations without code changes, essential for solo development timeline.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Playtesting & Iteration</h3>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 2rem;">
+                        Limited playtesting was conducted during the 1-month prototype phase, with primary focus on environmental wayfinding and puzzle clarity. Iterations refined how players naturally discovered solutions through environmental observation.
+                    </p>
+                    
+                    <div class="challenge-item">
+                        <h4>Environmental Cue Refinement</h4>
+                        <p><strong>Challenge:</strong> Players initially struggled with navigation, particularly in the facility lobby where multiple paths were available simultaneously.</p>
+                        <p><strong>Solution:</strong> Added more pronounced lighting cues to active pathways and adjusted door positioning to create clearer sightlines toward objectives. Used water particle density as a secondary cue, where active flow paths had more visible particles.</p>
+                        <p><strong>Result:</strong> Navigation flow improved noticeably, with fewer instances of players backtracking or getting lost in the lobby hub.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Puzzle Readability</h4>
+                        <p><strong>Challenge:</strong> Some water routing puzzles had solutions that weren't immediately apparent from observation, leading to excessive trial-and-error rather than spatial reasoning.</p>
+                        <p><strong>Solution:</strong> Enhanced visual connections between switches and their affected propellers using more obvious pipe routing geometry. Ensured all puzzle elements were visible from switch locations so players could predict outcomes before activation.</p>
+                        <p><strong>Result:</strong> Players spent more time planning solutions and less time randomly trying switches, indicating improved puzzle clarity and player understanding of the water system mechanics.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Key Design Contributions</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Designed 14-section level with clear three-act structure using Introduce-Practice-Master methodology for water rerouting mechanics
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Created physics-based water flow system enabling spatial puzzle-solving through environmental manipulation
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Developed environmental wayfinding system using lighting, architecture, and visual language instead of UI markers
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Implemented blockout prototype workflow prioritizing rapid mechanical validation over visual polish (1-month solo timeline)
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Designed 5 major puzzles with increasing difficulty across the reactor facility
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Created hub-based level structure with lobby serving as central progression node connecting facility wings
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Balanced environmental storytelling through facility decay patterns, broken machinery, and water damage without text exposition
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Designed timed finale sequence (helicopter extraction) testing mechanic mastery under pressure with backtracking disabled
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://youtu.be/XAgbfD2o3uA" target="_blank" class="project-link-btn primary">Watch Full Walkthrough (7 min)</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sage vs Slime Project Page -->
+        <section id="sagevsslime" class="section">
+            <div class="content-card">
+                <div class="project-header">
+                    <button class="back-button" onclick="showPortfolio()">Back to Portfolio</button>
+                </div>
+
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h1 class="project-page-title">Sage vs Slime: Analog Card Game</h1>
+                    <p class="project-subtitle">Cross-Medium Design Challenge - Digital to Tabletop Translation</p>
+
+                    <div style="margin: 2rem 0;">
+                        <img 
+                            src="assets/images/sagevsslime/danylo-gorbachuk-sagevsslime-cards-display.png" 
+                            alt="Sage vs Slime Card Display"
+                            style="width: 100%; max-width: 900px; height: auto; border-radius: 8px;">
+                    </div>
+                </div>
+
+                <div class="project-details-grid">
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Engine</div>
+                        <div class="project-detail-value">Physical Card Game</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Development Time</div>
+                        <div class="project-detail-value">40 Hours</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Team Size</div>
+                        <div class="project-detail-value">4 Designers</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Role</div>
+                        <div class="project-detail-value">Systems Designer & Balance Lead</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Platform</div>
+                        <div class="project-detail-value">Tabletop / Steam Workshop</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Focus</div>
+                        <div class="project-detail-value">Cross-Medium Design & Balance</div>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Project Overview</h3>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
+                        Sage vs Slime is a competitive 2-player card game where players battle using unit cards and power-ups in a War-inspired simultaneous reveal system. Designed in 1 week as a cross-medium challenge: take a digital platformer and create an analog version. This meant reimagining real-time combat as simultaneous card reveals that preserve the original's tension.
+                    </p>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
+                        Working as systems designer on a 4-person team with a 1-week timeline, I focused on card effect hierarchy, balance across 24 total cards, and edge case resolution. The game translates our digital platformer's wave-based combat, projectile attacks, and power-up systems into strategic card play where prediction and counter-play replace reflexes.
+                    </p>
+                    <p style="color: #4a5568; line-height: 1.7;">
+                        Each player starts with 12 cards (9 units, 3 power-ups). Players simultaneously reveal unit cards each round, with effects triggering based on timing hierarchy (On Flip → Always → Power-Ups → Resolution → On Death). First player to win 5 rounds claims victory. Simple rules create interesting decisions in every card choice.
+                    </p>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Core Mechanics & Systems</h3>
+                    
+                    <div class="challenge-item">
+                        <h4>Game Flow: Six-Phase Structure</h4>
+                        <p><strong>1. Play Phase:</strong> Both players select one unit card and place face-down simultaneously.</p>
+                        <p><strong>2. Reveal Phase:</strong> Cards flip simultaneously. On Flip effects activate immediately. Cards with Always effects remain active for entire round.</p>
+                        <p><strong>3. Power-Up Phase:</strong> Players may play power-ups from hand. Multiple power-ups can be played per round.</p>
+                        <p><strong>4. Resolution Phase:</strong> Higher value card wins unless modified by effects. Ties result in no winner (both players return cards to hand).</p>
+                        <p><strong>5. Discard Phase:</strong> Used power-ups and losing unit cards placed in discard. Winning cards also discarded.</p>
+                        <p><strong>6. End Phase:</strong> Check for victory (5 wins). If no winner, return to Play Phase.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Card Effect System</h4>
+                        <p><strong>On Flip Effects:</strong> Trigger immediately when card is revealed (before power-ups). Examples include revealing opponent's hand card or forcing specific plays.</p>
+                        <p><strong>Always Effects:</strong> Remain active throughout the entire round. Can modify values, block opponent effects, or create continuous advantages.</p>
+                        <p><strong>On Death Effects:</strong> Activate only when card loses the round. Often provide comeback mechanics or future-round advantages from losing positions.</p>
+                        <p>Effect timing hierarchy prevents ambiguity and adds depth to decision-making. You need to consider card values, effect interactions, and timing.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Power-Up Cards</h4>
+                        <p><strong>Fireball/Slime Shot:</strong> Decreases opposing card's value by 1. One-time use, then discarded. Represents projectile attacks from digital version.</p>
+                        <p><strong>Smoke Bomb:</strong> Both players return unit cards to hand, round results in no winner. Power-ups still discarded. Represents escape/reset mechanic.</p>
+                        <p><strong>Damage Potion:</strong> Increases your card's value by 1. One-time use, then discarded. Represents power-up collection from digital version.</p>
+                        <p>Limited quantity (3 per player) forces careful power-up management. You decide the best timing rather than using them immediately, creating resource management layer.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Systems Design Focus</h3>
+                    
+                    <div class="challenge-item">
+                        <h4>Card Balance Across 18 Units</h4>
+                        <p>Designed 18 unit cards (9 per player) with varying base values and effects. Balance considerations included raw value strength, effect power, and strategic versatility. Higher value cards received weaker effects, while lower value cards gained stronger effects to maintain viability throughout game.</p>
+                        <p>Created natural counter-play dynamics where no single card dominates. Master Swordsman's immunity to effects makes it strong defensively but predictable. Lower-value cards with On Flip effects can win rounds through surprise timing rather than raw power.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Information Asymmetry & Prediction</h4>
+                        <p>Simultaneous play creates double-blind decisions where neither player knows opponent's choice until reveal. This requires prediction and counter-prediction. You need to balance playing strong cards early (controlling the board) versus saving them for critical rounds.</p>
+                        <p>Some card effects reveal information (showing opponent's hand cards), adding information warfare layer. Players can use revealed information to predict future plays, creating meta-game around information advantage.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Edge Case Resolution</h4>
+                        <p>Identified and documented edge cases during playtesting to maintain game clarity. Key example: "Reveal opponent card" effect on final round would leave opponent with no playable card. Resolution: Revealed card returns to hand, effect doesn't apply, maintaining fairness without feel-bad moments.</p>
+                        <p>Another edge case: Tie rounds with On Death effects. Resolution: On Death effects don't trigger during ties since no card "loses." This prevents exploitation of tie scenarios for effect activation.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Playtesting & Iteration</h3>
+                    
+                    <div class="challenge-item">
+                        <h4>Iteration #1: Master Swordsman Balance</h4>
+                        <p><strong>Problem:</strong> Master Swordsman card was originally immune only to opponent power-ups (Fireball, Smoke Bomb, Damage Potion). This made it too narrow in function, easily countered by unit card effects, and undervalued by players during selection.</p>
+                        <p><strong>Solution:</strong> Expanded immunity to ALL opponent card effects (both power-ups and unit effects). This created a true defensive anchor card that players could rely on as safe play in uncertain situations. Tested across 5+ games to make sure it wasn't overpowered.</p>
+                        <p><strong>Result:</strong> Master Swordsman became viable strategic choice without dominating. Players valued it more highly for its reliability, using it to secure critical rounds. Win rate balanced appropriately with its increased power level.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Iteration #2: Edge Case - Last Card Interaction</h4>
+                        <p><strong>Problem:</strong> Cards with "reveal opponent's hand card and block it next round" effect created unfair situation when used on final unit card. Opponent would have no legal card to play, creating unwinnable scenario.</p>
+                        <p><strong>Solution:</strong> Documented edge case rule: If revealed card is opponent's last unit card, effect doesn't apply and card returns to hand. This maintains card effect functionality throughout most of game while preventing feel-bad endgame scenario.</p>
+                        <p><strong>Result:</strong> Eliminated potential game-breaking situation without requiring complete card redesign. Edge case rule preserved card's strategic value in early/mid game while keeping the endgame fair regardless of card order.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Iteration #3: Smoke Bomb Timing Clarification</h4>
+                        <p><strong>Problem:</strong> Confusion arose about Smoke Bomb interaction with already-played power-ups. Players unsure if Smoke Bomb reset allowed retrieval of previously spent power-ups or only returned unit cards.</p>
+                        <p><strong>Solution:</strong> Clarified in ruleset: Smoke Bomb returns unit cards to both players' hands (nullifying round), but all power-ups played that round (including Smoke Bomb itself) are still discarded. This maintains power-up resource management.</p>
+                        <p><strong>Result:</strong> Removed ambiguity in critical decision moments. Players could confidently use Smoke Bomb as emergency escape without exploiting power-up economy. Maintained intended resource scarcity.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Digital Inspiration & Translation Challenge</h3>
+                    
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1.5rem;">
+                        Before creating the card game, our team developed a wave-based platformer featuring the Cloaked Sage battling hordes of slimes. The digital version emphasized real-time combat with projectiles, wave-based enemy spawning, collectible power-ups, and reflex-dependent gameplay. This became the foundation we needed to translate into analog form.
+                    </p>
+
+                    <div style="margin: 2rem 0; text-align: center;">
+                        <h4 style="color: #2d3748; font-weight: 600; margin-bottom: 1rem;">Original Platformer Gameplay</h4>
+                        <video 
+                            autoplay
+                            muted
+                            loop
+                            style="width: 100%; max-width: 900px; height: auto; border-radius: 8px;"
+                            poster="assets/images/sagevsslime/danylo-gorbachuk-sagevsslime-platformer-thumbnail.png"
+                            title="Sage vs Slime Platformer">
+                            <source src="assets/videos/sagevsslime/danylo-gorbachuk-sagevsslime-platformer.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-top: 1rem; font-style: italic;">
+                            1-week digital platformer prototype featuring wave-based combat, projectile attacks, and power-up systems
+                        </p>
+                    </div>
+
+                    <div class="challenge-item" style="margin-top: 2rem;">
+                        <h4>Challenge: Translating Real-Time to Turn-Based</h4>
+                        <p>Converting the platformer to analog required keeping the strategic elements while removing computational elements like trajectory physics, timing precision, and simultaneous multi-entity actions. Traditional turn-based card games would lose the tension of simultaneous enemy waves and split-second combat decisions that defined the platformer's experience.</p>
+                        <p>The design needed to preserve competitive pressure and meaningful moment-to-moment choices without digital computation. How could we maintain the excitement and strategic tension of real-time combat through purely analog mechanics?</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Solution: Simultaneous Reveal with Layered Effects</h4>
+                        <p>Reimagined core loop as War-inspired simultaneous card reveal, where both players commit to choices before seeing opponent's play. This preserved the "simultaneous pressure" of wave combat while being fully analog. Card effects add depth through prediction and counter-play rather than execution speed.</p>
+                        <p>Introduced effect timing hierarchy (On Flip, Always, Power-Up Phase, On Death) to replace computational complexity with tactical decision-making. You predict opponent's plays and layer your power-ups strategically, creating tension through anticipation rather than reflexes.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Validation: Mechanics Translation Success</h4>
+                        <p>Playtesting confirmed successful translation of core themes. Players reported similar competitive tension as digital version despite slower pace. Strategic depth emerged from card effect combinations and power-up timing, validating that meaningful choices can replace real-time execution while maintaining engagement.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Cross-Medium Design Analysis</h3>
+                    
+                    <div style="background: #f7fafc; padding: 2rem; border-radius: 8px; margin: 1rem 0;">
+                        <h4 style="color: #2d3748; margin-bottom: 1rem;">Mechanics Evolution: Digital → Analog</h4>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <p style="color: #2d3748; font-weight: 600; margin-bottom: 0.5rem;">Real-Time Projectiles → Power-Up Cards</p>
+                            <p style="color: #4a5568; line-height: 1.7;"><strong>Digital:</strong> Player/enemies fire continuous projectiles requiring aim and timing</p>
+                            <p style="color: #4a5568; line-height: 1.7;"><strong>Analog:</strong> Fireball/Slime Shot cards decrease opponent value by 1, one-time use</p>
+                            <p style="color: #718096; font-size: 0.9rem; font-style: italic;">Translation maintains offensive pressure concept through limited-use value modification</p>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <p style="color: #2d3748; font-weight: 600; margin-bottom: 0.5rem;">Wave-Based Enemy Spawning → Round-Based Phases</p>
+                            <p style="color: #4a5568; line-height: 1.7;"><strong>Digital:</strong> Enemies spawn in increasing waves over time, escalating difficulty</p>
+                            <p style="color: #4a5568; line-height: 1.7;"><strong>Analog:</strong> Each round is a "wave" with goal of winning 5 total waves for victory</p>
+                            <p style="color: #718096; font-size: 0.9rem; font-style: italic;">Maintained progression structure and win condition pacing from digital version</p>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <p style="color: #2d3748; font-weight: 600; margin-bottom: 0.5rem;">Collectible Power-Ups → Starting Hand Resources</p>
+                            <p style="color: #4a5568; line-height: 1.7;"><strong>Digital:</strong> Players collect power-ups during gameplay for temporary advantages</p>
+                            <p style="color: #4a5568; line-height: 1.7;"><strong>Analog:</strong> Each player starts with 3 power-up cards, must manage usage across game</p>
+                            <p style="color: #718096; font-size: 0.9rem; font-style: italic;">Transformed discovery mechanic into resource management strategy</p>
+                        </div>
+
+                        <div>
+                            <p style="color: #2d3748; font-weight: 600; margin-bottom: 0.5rem;">Reflex-Based Combat → Prediction & Counter-Play</p>
+                            <p style="color: #4a5568; line-height: 1.7;"><strong>Digital:</strong> Success determined by reaction time, aim accuracy, movement skill</p>
+                            <p style="color: #4a5568; line-height: 1.7;"><strong>Analog:</strong> Success determined by predicting opponent's plays, optimal card timing, effect layering</p>
+                            <p style="color: #718096; font-size: 0.9rem; font-style: italic;">Replaced execution skill with strategic planning while maintaining competitive pressure</p>
+                        </div>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Key Design Insight</h4>
+                        <p>The most successful analog translations didn't attempt to recreate digital mechanics literally, but instead identified the <strong>emotional experience and strategic intent</strong> behind digital mechanics and reimagined them through analog-appropriate systems.</p>
+                        <p>For example: Digital projectiles create moment-to-moment offensive pressure and require resource management (ammo/cooldowns). Analog power-up cards achieve the same strategic purpose (offensive advantage, limited uses) through completely different implementation. Both create tension around "when do I use this resource?" despite vastly different execution.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Key Design Contributions</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Designed 18-card effect system with three trigger types (On Flip, Always, On Death) and timing hierarchy
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Balanced 6 power-up cards (Fireball, Smoke Bomb, Damage Potion) through playtesting iterations
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Created six-phase turn structure (Play → Reveal → Power-Up → Resolution → Discard → End)
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Translated digital platformer mechanics (projectiles, waves, power-ups) into analog card game systems
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Identified and resolved edge cases (last card interaction, tie scenarios with On Death effects)
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Documented complete ruleset with edge case handling and effect priority systems
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Completed full project from concept to playable build in 1-week team timeline
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Published playable version on Steam Workshop for Tabletop Simulator
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3665505469" target="_blank" class="project-link-btn primary">Play on Steam Workshop</a>
+                    <a href="assets/files/sagevsslime/sage-vs-slime-rules.pdf" target="_blank" class="project-link-btn secondary">Download Rules PDF</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fuse Project Page -->
+        <section id="fuse" class="section">
+            <div class="content-card">
+                <div class="project-header">
+                    <button class="back-button" onclick="showPortfolio()">Back to Portfolio</button>
+                </div>
+
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h1 class="project-page-title">Fuse</h1>
+                    <p class="project-subtitle">Isometric Turn-Based Puzzle Prototype - Strategic Mechanics & Rapid Iteration</p>
+                </div>
+
+                <div style="text-align: center; margin: 3rem 0;">
+                    <video 
+                        autoplay 
+                        loop 
+                        muted 
+                        playsinline
+                        style="width: 100%; max-width: 900px; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);"
+                        title="Fuse Gameplay Demonstration">
+                        <source src="assets/videos/danylo-gorbachuk-fuse-gameplay.mp4" type="video/mp4">
+                    </video>
+                    <p style="font-size: 0.9rem; color: #666; text-align: center; margin-top: 1rem; font-style: italic;">
+                        Gameplay demonstration showcasing turn-based puzzle mechanics
+                    </p>
+                </div>
+
+                <div class="project-details-grid">
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Engine</div>
+                        <div class="project-detail-value">Unreal Engine 5</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Development Time</div>
+                        <div class="project-detail-value">40 Hours</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Team Size</div>
+                        <div class="project-detail-value">Solo Project</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Focus</div>
+                        <div class="project-detail-value">Puzzle Mechanics & Rapid Prototyping</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Genre</div>
+                        <div class="project-detail-value">Isometric Turn-Based Puzzle</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Scope</div>
+                        <div class="project-detail-value">5 Levels & Mechanics Prototype</div>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Project Overview</h3>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
+                        Fuse is an isometric turn-based puzzle game built as a rapid prototyping exercise. The focus was on designing simple mechanics that combine in interesting ways. Players navigate grid-based levels where every action advances all active fuses, requiring planning ahead.
+                    </p>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
+                        Developed solo over 2 weeks, the project prioritized mechanics-first design and rapid iteration. I built 5 prototype levels that showcase how the mechanics work together. The minimalist visual style keeps the focus on puzzle-solving rather than graphics.
+                    </p>
+                    <p style="color: #4a5568; line-height: 1.7;">
+                        <strong>Project Scope:</strong> 2-week rapid prototype, 5 levels (2-6 minutes each), 4 core mechanics (fuse progression, bomb interaction, ice tiles, teleportation), turn-based puzzle gameplay.
+                    </p>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Core Mechanics</h3>
+                    
+                    <div class="challenge-item">
+                        <h4>Fuse Progression System</h4>
+                        <p>Pressure-sensitive tiles ignite fuses leading to bombs. Each player action advances the fuse one step closer to detonation. The fuse appears as a burning wick extending across tiles, with visual indicators showing how close it is to exploding.</p>
+                        <p>Players can extinguish fuses by stepping on them, or let them explode to destroy obstacles. Sometimes explosions help clear paths, so you have to decide whether to put out the fuse or use it.</p>
+                        <p><strong>Turn-Based Integration:</strong> Every player action advances all active fuses at once. In levels with multiple fuses, you need to manage which ones to handle first while also solving the spatial puzzle.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Bomb Interaction System</h4>
+                        <p>You can push bombs like in Sokoban. Push them onto fuses to create timed explosions, move them away from important areas, or position them to destroy obstacles.</p>
+                        <p>Bombs move one tile per push in the direction you're moving. They stop when they hit walls or other objects. You need to think ahead about where to push them and when they'll explode.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Ice Tiles</h4>
+                        <p>Ice tiles make you slide until you hit something. You can't stop on ice, so you need to plan where you'll end up before you step on it.</p>
+                        <p>When combined with fuses, ice can make you slide past the fuse you need to extinguish, so you have to plan your route carefully.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Teleportation System</h4>
+                        <p>Teleport tiles transport players instantly to linked destinations. They provide shortcuts through levels and work well with fuse mechanics, letting you quickly reach distant fuses before they explode.</p>
+                        <p>Players decide whether to take direct routes or use teleports to bypass obstacles. Some puzzles require using teleports to reach fuses in time.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Puzzle Design Philosophy</h3>
+                    
+                    <div class="challenge-item">
+                        <h4>Simple Rules, Complex Solutions</h4>
+                        <p>Each mechanic follows clear rules. Fuses advance one step per turn. Ice slides you until you hit something. Bombs destroy adjacent blocks. Teleports link specific tiles. The rules are simple, but puzzles get harder when you combine multiple mechanics together.</p>
+                        <p>Players learn what each element does quickly, but solving puzzles requires figuring out how to use them together. A fuse might block your path until you realize you can push a bomb onto it to create a timed explosion. Ice might seem like an obstacle until you use the sliding to bypass other hazards.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Combining Mechanics</h4>
+                        <p>Instead of adding more mechanics, I made puzzles harder by combining the existing ones. Early puzzles use one mechanic at a time: just a fuse, or just ice tiles. Mid-difficulty puzzles combine two: ice with fuse timing, or bombs with teleports. The hardest puzzles use all four at once.</p>
+                        <p>A puzzle with three fuses, teleports, and ice feels very different from a single-fuse puzzle, even though it uses the same mechanics. This approach let me create variety without needing more features.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Multiple Solutions</h4>
+                        <p>Most puzzles have multiple ways to solve them. Should you put out a fuse immediately, or handle other things first? Should you push the bomb directly or teleport around? These choices matter and lead to different solutions.</p>
+                        <p>The turn-based system gives you time to think. You don't need fast reflexes, just planning and spatial reasoning.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Level Showcase: Curated Selection</h3>
+                    
+                    <div style="background: #f7fafc; padding: 2rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
+                            I built 5 prototype levels during development. These 3 levels best demonstrate how the mechanics work together and introduce different puzzle concepts.
+                        </p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Level 1: Learning the Basics</h4>
+                        <p><strong>Mechanics Featured:</strong> Fuse progression, ice navigation, timed pressure</p>
+                        <p><strong>Design Goal:</strong> Teach core mechanics one at a time. A fuse burns toward a bomb that will destroy the bridge to the finish. Players navigate ice tiles to reach the exit before the bomb explodes.</p>
+                        <p><strong>Key Learning:</strong> Understanding fuse timing and ice movement. Players learn how long they have and how ice tiles affect movement.</p>
+                        <p><strong>Completion Time:</strong> 2-3 minutes first try</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Level 2: Using Bombs to Your Advantage</h4>
+                        <p><strong>Mechanics Featured:</strong> Bomb pushing, ice navigation, dual bomb management</p>
+                        <p><strong>Design Goal:</strong> Introduce bomb pushing as a tool. A block prevents finishing the level - you need to push a bomb to destroy it. Meanwhile, another bomb threatens the bridge with its own fuse timer, creating time pressure while navigating ice.</p>
+                        <p><strong>Key Learning:</strong> Bombs can help you, not just threaten you. Players learn to push bombs strategically while managing time limits.</p>
+                        <p><strong>Completion Time:</strong> 4-6 minutes average</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Level 3: Mastery Challenge</h4>
+                        <p><strong>Mechanics Featured:</strong> All mechanics in complex scenario</p>
+                        <p><strong>Design Goal:</strong> Test full mastery. The fuse starts burning immediately, but there's no bomb in place yet. You complete a complex puzzle pushing the bomb through multiple steps while the fuse advances. Many sequential actions required.</p>
+                        <p><strong>Key Learning:</strong> Planning multi-step solutions under pressure. You need to think several moves ahead to position the bomb correctly before the fuse reaches it.</p>
+                        <p><strong>Completion Time:</strong> 5-8 minutes for most players, 3-4 minutes for optimized solutions</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Playtesting & Iteration</h3>
+                    
+                    <div class="challenge-item">
+                        <h4>Iteration #1: Fuse Burn Rate</h4>
+                        <p><strong>Problem:</strong> The fuses advanced every turn, even when you were just thinking. Players felt rushed and said it punished them for taking time to plan.</p>
+                        <p><strong>Solution:</strong> Changed fuses to only advance when you actually move. You can think as long as you want without the fuses burning.</p>
+                        <p><strong>Result:</strong> Players felt more in control. They could plan carefully without feeling pressured, but still had urgency once they started moving.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Iteration #2: Visual Clarity</h4>
+                        <p><strong>Problem:</strong> With multiple fuses burning, players couldn't tell which one was closest to exploding. They had to count tiles manually.</p>
+                        <p><strong>Solution:</strong> Made fuses glow brighter orange/red when they're close to bombs. Fuses within 2 tiles of bombs pulse to warn you.</p>
+                        <p><strong>Result:</strong> Players could immediately see which fuses were urgent. This let them focus on solving the puzzle instead of counting tiles.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Iteration #3: Bomb Explosion Clarity</h4>
+                        <p><strong>Problem:</strong> Players were unsure what bombs would destroy when they exploded. They couldn't predict which blocks would break, leading to unexpected results.</p>
+                        <p><strong>Solution:</strong> Added visual indicators showing the bomb's destruction radius. Made it clear which tiles would be affected by the explosion.</p>
+                        <p><strong>Result:</strong> Players could plan bomb placements confidently. They knew exactly what would happen before triggering explosions.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Rapid Prototyping Process</h3>
+                    
+                    <div class="challenge-item">
+                        <h4>Two-Week Development Timeline</h4>
+                        <p><strong>Week 1: Mechanics</strong> - Built the core systems. Implemented fuse progression, bomb pushing, ice tiles, and teleportation separately to test how each one worked.</p>
+                        <p><strong>Week 2: Puzzles</strong> - Made 5 puzzle levels trying different mechanic combinations. Playtested daily and picked the 3 best levels to refine and showcase.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Minimal Visuals</h4>
+                        <p>The simple graphics were intentional. By keeping visuals minimal, players focus on the puzzle mechanics instead of graphics. Red tiles = walkable, cyan = ice, brown = destroyable, checkered = goal. This made it fast to iterate on puzzles without needing art assets.</p>
+                        <p>The clean look makes the game easy to read at a glance. Players said the simplicity helped them focus on solving puzzles.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Choosing Which Levels to Show</h4>
+                        <p>I made 5 prototype levels but only showcased the best 3. Quality over quantity. The other levels weren't bad - they were experiments that helped me figure out which mechanic combinations worked well and which felt frustrating.</p>
+                        <p>Good puzzles have multiple solutions, mechanics that work together naturally, and feel fair when you fail. The 3 levels I kept hit all these points.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Key Design Contributions</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Designed fuse mechanic that works as both hazard and tool depending on player strategy
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Built turn-based system with 4 mechanics (fuse, bomb, ice, teleport) that combine in different ways
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Created 5 prototype levels and selected 3 that best show how the mechanics interact
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Completed full rapid prototyping cycle from concept to playable build in 2-week timeline
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Designed minimalist visual language prioritizing mechanical clarity over aesthetic complexity
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Balanced fuse burn rates through iterative playtesting to optimize strategic tension without frustration
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Implemented visual clarity improvements (fuse color-grading, bomb explosion radius indicators) based on usability testing
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Documented mechanic specifications with user stories, storyboards, and completion criteria
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="content-card">
+                <h2 class="section-title">Other Skills</h2>
+                
+                <div class="skills-category">
+                    <h3>Core Design Specializations</h3>
+                    <div class="badges">
+                        <span class="badge">Level Design</span>
+                        <span class="badge">Game Mechanics Design</span>
+                        <span class="badge">Systems Design</span>
+                        <span class="badge">Game Design Documentation</span>
+                        <span class="badge">User Interface Testing</span>
+                        <span class="badge">Rapid Prototyping</span>
+                        <span class="badge">Cross-Functional Collaboration</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Software Proficiency</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">UE5</div>
+                            <div class="skill-info">
+                                <h4>Unreal Engine 5</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">UE4</div>
+                            <div class="skill-info">
+                                <h4>Unreal Engine 4</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">UBP</div>
+                            <div class="skill-info">
+                                <h4>Unreal Blueprint</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">JIRA</div>
+                            <div class="skill-info">
+                                <h4>Atlassian JIRA</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">CONF</div>
+                            <div class="skill-info">
+                                <h4>Atlassian Confluence</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">P4V</div>
+                            <div class="skill-info">
+                                <h4>Perforce</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">Git</div>
+                            <div class="skill-info">
+                                <h4>Git</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">Trello</div>
+                            <div class="skill-info">
+                                <h4>Trello</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">Excel</div>
+                            <div class="skill-info">
+                                <h4>Microsoft Excel</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Programming & Technical Skills</h3>
+                    <div class="badges">
+                        <span class="badge">C++ Programming (basics)</span>
+                        <span class="badge">Python (basics)</span>
+                        <span class="badge">Technical Documentation</span>
+                        <span class="badge">Git</span>
+                        <span class="badge">Perforce</span>
+                        <span class="badge">Version Control Systems</span>
+                        <span class="badge">Quality Assurance</span>
+                        <span class="badge">Agile Software Development</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Additional Tools & Platforms</h3>
+                    <div class="badges">
+                        <span class="badge">Audacity</span>
+                        <span class="badge">Machinations</span>
+                        <span class="badge">Clipchamp</span>
+                        <span class="badge">Discord</span>
+                        <span class="badge">Slack</span>
+                        <span class="badge">Excel</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="content-card">
+                <h2 class="section-title">About Me</h2>
+                
+                <div class="about-grid">
+                    <div class="profile-section">
+                        <div class="profile-image">
+                            <img src="assets/images/danylo-gorbachuk-headshot.jpg" alt="Danylo Gorbachuk - Game Designer">
+                        </div>
+                        <div class="profile-details">
+                            <div class="profile-item">
+                                <div class="profile-label">Location</div>
+                                <div class="profile-value">Fort Lauderdale, FL</div>
+                            </div>
+                            <div class="profile-item">
+                                <div class="profile-label">Experience</div>
+                                <div class="profile-value">2 Years</div>
+                            </div>
+                            <div class="profile-item">
+                                <div class="profile-label">Education</div>
+                                <div class="profile-value">Game Design & Development</div>
+                                <div style="font-size: 0.875rem; color: #666; margin-top: 0.25rem;">Game Design Bachelor Full Sail (GPA 3.99)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bio-section">
+                        <div>
+                            <h3>Biography</h3>
+                            <p>
+                                I'm a game designer with 2 years of experience specializing in level design, game mechanics, and systems design. Based in Fort Lauderdale, Florida. I work in Unreal Engine 5 and focus on creating gameplay that's fun and flows well. I document designs thoroughly and use standard tools like JIRA and Confluence.
+                            </p>
+                            <p>
+                                Bachelor's in Game Design from Full Sail University (3.99 GPA). Experienced with JIRA, Confluence, Perforce, and thorough design documentation.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3>Design Philosophy</h3>
+                            <p>
+                                I believe exceptional game design emerges when level design, mechanics, and systems work in perfect harmony. My approach focuses on creating cohesive player experiences where spatial design enhances gameplay mechanics, and progression systems drive long-term engagement. Every design decision should serve the player's journey while maintaining clear, implementable vision for development teams.
+                            </p>
+                        </div>
+
+                        <div class="contact-buttons">
+                            <a href="/cdn-cgi/l/email-protection#93f7f2fdeafffcd3f6ebf2fee3fff6bdf0fcfe" class="contact-btn">Email Me</a>
+                            <a href="#" class="contact-btn">LinkedIn</a>
+                            <a href="#" class="contact-btn">Portfolio Site</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="info-cards-section">
+            <div class="info-cards-grid">
+                <!-- Core Expertise Card -->
+                <div class="info-card">
+                    <h3>Core Expertise</h3>
+                    <p>
+                        Specialized in level design, game mechanics, and systems design. Proficient in Unreal Engine 5 with strong documentation skills.
+                    </p>
+                    <ul>
+                        <li>level design with focus on player flow and engagement</li>
+                        <li>game mechanics that create compelling gameplay loops</li>
+                        <li>systems design for balanced player progression</li>
+                        <li>technical documentation and team collaboration</li>
+                    </ul>
+                </div>
+
+                <!-- Skills & Software Card -->
+                <div class="info-card">
+                    <div class="skills-grid-footer">
+                        <div>
+                            <h4 style="font-size: 1.125rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Skills</h4>
+                            <ul style="list-style: none; padding: 0; margin: 0;">
+                                <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Level Design</li>
+                                <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Game Mechanics Design</li>
+                                <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Systems Design</li>
+                                <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Game Design Documentation</li>
+                                <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Rapid Prototyping</li>
+                                <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">User Testing</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.125rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Software</h4>
+                            <ul style="list-style: none; padding: 0; margin: 0;">
+                                <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Unreal Engine 5</li>
+                                <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Atlassian JIRA</li>
+                                <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Atlassian Confluence</li>
+                                <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Perforce</li>
+                                <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Trello</li>
+                                <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Git</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="info-card-button" onclick="showSkills()">Other Skills</button>
+                </div>
+
+                <!-- Professional Readiness Card -->
+                <div class="info-card">
+                    <h3>Professional Readiness</h3>
+                    <p>
+                        Game Design Bachelor's from Full Sail University with 3.99 GPA. Proficient in industry-standard tools including Unreal Engine 5, Atlassian JIRA/Confluence, and Perforce. Ready to contribute immediately to development teams with strong technical and collaborative skills.
+                    </p>
+                    <button class="info-card-button" onclick="showAbout()">About Me</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            <p>&copy; 2024 Danylo Gorbachuk. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const sections = document.querySelectorAll('.section');
+
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetSection = this.getAttribute('data-section');
+                    
+                    // Remove active class from all buttons and sections
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    sections.forEach(section => section.classList.remove('active'));
+                    
+                    // Add active class to clicked button and target section
+                    this.classList.add('active');
+                    document.getElementById(targetSection).classList.add('active');
+                });
+            });
+
+            // Add click handlers for project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const projectId = this.getAttribute('data-project');
+                    
+                    // Hide all sections
+                    sections.forEach(section => section.classList.remove('active'));
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Show the selected project page
+                    if (projectId === 'apocalypse1866') {
+                        document.getElementById('apocalypse1866').classList.add('active');
+                    } else if (projectId === 'grimhold') {
+                        document.getElementById('grimhold').classList.add('active');
+                    } else if (projectId === 'cryostream') {
+                        document.getElementById('cryostream').classList.add('active');
+                    } else if (projectId === 'sagevsslime') {
+                        document.getElementById('sagevsslime').classList.add('active');
+                    } else if (projectId === 'fuse') {
+                        document.getElementById('fuse').classList.add('active');
+                    }
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+
+            // Global navigation functions
+            window.showPortfolio = function() {
+                sections.forEach(section => section.classList.remove('active'));
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                
+                document.getElementById('portfolio').classList.add('active');
+                document.querySelector('[data-section="portfolio"]').classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            window.showSkills = function() {
+                sections.forEach(section => section.classList.remove('active'));
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                
+                document.getElementById('skills').classList.add('active');
+                document.querySelector('[data-section="skills"]').classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            window.showAbout = function() {
+                sections.forEach(section => section.classList.remove('active'));
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                
+                document.getElementById('about').classList.add('active');
+                document.querySelector('[data-section="about"]').classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+        });
+    </script>
+</body>
+</html>
