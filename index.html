@@ -969,7 +969,7 @@
     <!-- Lightbox Modal -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" onclick="event.stopPropagation()">
+        <img loading="lazy" id="lightbox-img" onclick="event.stopPropagation()">
     </div>
     
     <!-- Header -->
@@ -1048,7 +1048,7 @@
             <div class="content-card">
                 <!-- Project Banner -->
                 <div class="project-banner">
-                    <img src="assets/images/apocalypse/danylo-gorbachuk-apocalypse1866-banner.png" alt="Apocalypse 1866 Game Banner" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 2rem;">
+                    <img loading="lazy" src="assets/images/apocalypse/danylo-gorbachuk-apocalypse1866-banner.png" alt="Apocalypse 1866 Game Banner" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 2rem;">
                 </div>
 
                 <div class="project-header">
@@ -1058,7 +1058,7 @@
                 </div>
 
                 <div style="text-align: center; margin: 3rem 0;">
-                    <video 
+                    <video preload="metadata" 
                         autoplay 
                         loop 
                         muted 
@@ -1115,7 +1115,7 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
                         <div style="background: #f7fafc; padding: 1.5rem; border-radius: 8px;">
                             <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Initial Blockout Phase</h4>
-                            <video 
+                            <video preload="none" 
                                 autoplay 
                                 loop 
                                 muted 
@@ -1130,7 +1130,7 @@
                         
                         <div style="background: #f7fafc; padding: 1.5rem; border-radius: 8px;">
                             <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Final Implementation</h4>
-                            <video 
+                            <video preload="none" 
                                 autoplay 
                                 loop 
                                 muted 
@@ -1148,7 +1148,7 @@
                         <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Upgrade System UI Evolution</h4>
                         <div style="display: flex; align-items: center; gap: 2rem; background: #f7fafc; padding: 1.5rem; border-radius: 8px;">
                             <div style="flex: 1;">
-                                <video 
+                                <video preload="none" 
                                     autoplay 
                                     loop 
                                     muted 
@@ -1162,7 +1162,7 @@
                             <div style="color: #2d3748; font-size: 2rem; font-weight: bold;">→</div>
                             
                             <div style="flex: 1;">
-                                <video 
+                                <video preload="none" 
                                     autoplay 
                                     loop 
                                     muted 
@@ -1426,7 +1426,7 @@
                 </div>
 
                 <div style="text-align: center; margin: 3rem 0;">
-                    <video 
+                    <video preload="none" 
                         autoplay 
                         loop 
                         muted 
@@ -1487,7 +1487,7 @@
                     <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Lockpicking Mechanic Design</h3>
                     
                     <div style="background: #f7fafc; padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-                        <video 
+                        <video preload="none" 
                             autoplay 
                             loop 
                             muted 
@@ -1597,7 +1597,7 @@
                             <img 
                                 src="assets/images/grimhold/danylo-gorbachuk-grimhold-level-pacing.png" 
                                 alt="Grimhold Level Pacing Flowchart"
-                                class="diagram-image"
+                                loading="lazy" class="diagram-image"
                                 onclick="openLightbox('assets/images/grimhold/danylo-gorbachuk-grimhold-level-pacing.png')"
                                 style="width: 100%; max-width: 1200px; height: auto; border-radius: 8px; margin: 0 auto; display: block; cursor: pointer; transition: opacity 0.2s;"
                                 onmouseover="this.style.opacity='0.8'"
@@ -1615,7 +1615,7 @@
                             <img 
                                 src="assets/images/grimhold/danylo-gorbachuk-grimhold-ipm-chart.png" 
                                 alt="Grimhold IPM Chart"
-                                class="diagram-image"
+                                loading="lazy" class="diagram-image"
                                 onclick="openLightbox('assets/images/grimhold/danylo-gorbachuk-grimhold-ipm-chart.png')"
                                 style="width: 100%; max-width: 1200px; height: auto; border-radius: 8px; margin: 0 auto; display: block; cursor: pointer; transition: opacity 0.2s;"
                                 onmouseover="this.style.opacity='0.8'"
@@ -1757,7 +1757,7 @@
 
                     <div style="margin: 2rem 0;">
                         <h4 style="color: #2d3748; font-weight: 600; margin-bottom: 1rem;">Gameplay Highlights</h4>
-                        <video 
+                        <video preload="none" 
                             autoplay
                             muted
                             loop
@@ -1821,7 +1821,7 @@
 
                     <div style="margin: 2rem 0; text-align: center;">
                         <h4 style="color: #2d3748; font-weight: 600; margin-bottom: 1rem;">Water Mechanics Demonstration</h4>
-                        <video 
+                        <video preload="none" 
                             autoplay
                             muted
                             loop
@@ -1861,7 +1861,7 @@
                                 <img 
                                     src="assets/images/cryostream/danylo-gorbachuk-cryostream-level-pacing.png" 
                                     alt="Cryostream Facility Level Pacing Flowchart"
-                                    class="diagram-image"
+                                    loading="lazy" class="diagram-image"
                                     onclick="openLightbox('assets/images/cryostream/danylo-gorbachuk-cryostream-level-pacing.png')"
                                     style="width: 100%; max-width: 1400px; height: auto; border-radius: 8px; margin: 0 auto; display: block; cursor: pointer; transition: opacity 0.2s;"
                                     onmouseover="this.style.opacity='0.8'"
@@ -2149,7 +2149,7 @@
 
                     <div style="margin: 2rem 0; text-align: center;">
                         <h4 style="color: #2d3748; font-weight: 600; margin-bottom: 1rem;">Original Platformer Gameplay</h4>
-                        <video 
+                        <video preload="none" 
                             autoplay
                             muted
                             loop
@@ -2282,7 +2282,7 @@
                 </div>
 
                 <div style="text-align: center; margin: 3rem 0;">
-                    <video 
+                    <video preload="none" 
                         autoplay 
                         loop 
                         muted 
@@ -2640,7 +2640,7 @@
                 <div class="about-grid">
                     <div class="profile-section">
                         <div class="profile-image">
-                            <img src="assets/images/danylo-gorbachuk-headshot.jpg" alt="Danylo Gorbachuk - Game Designer">
+                            <img src="assets/images/danylo-gorbachuk-headshot.jpg" alt="Danylo Gorbachuk - Game Designer" loading="lazy">
                         </div>
                         <div class="profile-details">
                             <div class="profile-item">
@@ -2851,6 +2851,27 @@
                     }, 3000);
                 });
             };
+        });
+
+        // Progressive video loading - preload videos in background after page loads
+        window.addEventListener('load', function() {
+            console.log('Page loaded - starting progressive video preloading...');
+            
+            // Step 1: After 2 seconds, start loading Grimhold videos (2nd most likely project)
+            setTimeout(function() {
+                console.log('Preloading Grimhold videos...');
+                document.querySelectorAll('#grimhold video[preload="none"]').forEach(function(video) {
+                    video.preload = 'metadata';
+                });
+            }, 2000);
+            
+            // Step 2: After 5 seconds, start loading remaining project videos
+            setTimeout(function() {
+                console.log('Preloading remaining project videos...');
+                document.querySelectorAll('#cryostream video[preload="none"], #fuse video[preload="none"], #gunslinger video[preload="none"]').forEach(function(video) {
+                    video.preload = 'metadata';
+                });
+            }, 5000);
         });
     </script>
 </body>
