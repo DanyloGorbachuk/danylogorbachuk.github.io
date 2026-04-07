@@ -2853,25 +2853,45 @@
             };
         });
 
-        // Progressive video loading - preload videos in background after page loads
+        // Event-based progressive video loading - wait for Apocalypse video to finish loading first
         window.addEventListener('load', function() {
-            console.log('Page loaded - starting progressive video preloading...');
+            console.log('Page loaded - waiting for Apocalypse video to load...');
             
-            // Step 1: After 2 seconds, start loading Grimhold videos (2nd most likely project)
-            setTimeout(function() {
-                console.log('Preloading Grimhold videos...');
-                document.querySelectorAll('#grimhold video[preload="none"]').forEach(function(video) {
-                    video.preload = 'metadata';
-                });
-            }, 2000);
+            // Get the main Apocalypse video
+            const apocalypseVideo = document.querySelector('#apocalypse1866 video');
             
-            // Step 2: After 5 seconds, start loading remaining project videos
-            setTimeout(function() {
-                console.log('Preloading remaining project videos...');
-                document.querySelectorAll('#cryostream video[preload="none"], #fuse video[preload="none"], #gunslinger video[preload="none"]').forEach(function(video) {
-                    video.preload = 'metadata';
-                });
-            }, 5000);
+            if (apocalypseVideo) {
+                // Wait for Apocalypse video to be ready to play through without buffering
+                apocalypseVideo.addEventListener('canplaythrough', function() {
+                    console.log('Apocalypse video loaded! Starting background loading...');
+                    
+                    // Small delay to let LCP settle, then load Grimhold (2nd priority)
+                    setTimeout(function() {
+                        console.log('Preloading Grimhold videos...');
+                        document.querySelectorAll('#grimhold video[preload="none"]').forEach(function(video) {
+                            video.preload = 'metadata';
+                        });
+                    }, 1000);
+                    
+                    // Load remaining videos a bit later
+                    setTimeout(function() {
+                        console.log('Preloading remaining project videos...');
+                        document.querySelectorAll('#cryostream video[preload="none"], #fuse video[preload="none"], #gunslinger video[preload="none"]').forEach(function(video) {
+                            video.preload = 'metadata';
+                        });
+                    }, 3000);
+                }, { once: true }); // Only fire once
+                
+                // Fallback: If video doesn't load in 10 seconds, start anyway
+                setTimeout(function() {
+                    console.log('Fallback: Starting background loading after 10s timeout');
+                    document.querySelectorAll('#grimhold video[preload="none"], #cryostream video[preload="none"], #fuse video[preload="none"], #gunslinger video[preload="none"]').forEach(function(video) {
+                        video.preload = 'metadata';
+                    });
+                }, 10000);
+            } else {
+                console.log('Apocalypse video not found, loading all videos normally');
+            }
         });
     </script>
 </body>
