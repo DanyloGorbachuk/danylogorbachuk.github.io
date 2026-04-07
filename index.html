@@ -583,21 +583,316 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            /* MOBILE OPTIMIZATION - Industry Standard Practices */
+
             .header-container {
                 flex-direction: column;
                 text-align: center;
+                padding: 1rem;
             }
 
             .about-grid {
                 grid-template-columns: 1fr;
             }
 
-            .project-page-title {
-                font-size: 2rem;
-            }
-
             .skills-grid-footer {
                 grid-template-columns: 1fr;
+            }
+
+            /* WIDTH OPTIMIZATION - Use 90%+ of Screen */
+            main {
+                padding: 1.5rem 0.5rem;
+                max-width: 100%;
+            }
+
+            .content-card {
+                padding: 1rem 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Skills section - even less padding */
+            #skills .content-card {
+                padding: 1rem 0.5rem;
+            }
+
+            .challenge-item {
+                padding: 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            /* TEXT SIZING - Industry Standard (Not Too Big) */
+            h1 {
+                font-size: 1.5rem !important;
+            }
+
+            h2, .section-title {
+                font-size: 1.35rem !important;
+            }
+
+            h3 {
+                font-size: 1.15rem !important;
+            }
+
+            h4 {
+                font-size: 1rem !important;
+            }
+
+            .project-page-title {
+                font-size: 1.65rem !important;
+            }
+
+            p, li {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+            }
+
+            .logo {
+                font-size: 1.2rem !important;
+            }
+
+            /* ABOUT ME PHOTO - Proper Mobile Display */
+            .profile-section {
+                text-align: center !important;
+                max-width: 100% !important;
+            }
+
+            .profile-image {
+                width: auto !important;
+                max-width: 100% !important;
+                height: auto !important;
+                max-height: 380px !important;
+                margin: 0 auto 1.5rem !important;
+            }
+
+            .profile-image img {
+                width: 100% !important;
+                height: 100% !important;
+                max-height: 380px !important;
+                object-fit: contain !important;
+                object-position: center !important;
+            }
+
+            .profile-details {
+                text-align: center !important;
+                margin: 0 auto 1.5rem !important;
+            }
+
+            .bio-section {
+                text-align: left !important;
+                padding: 0 !important;
+            }
+
+            .bio-section h3 {
+                text-align: left !important;
+            }
+
+            .bio-section p {
+                text-align: left !important;
+            }
+
+            .contact-buttons {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 0.75rem !important;
+                margin-top: 1.5rem !important;
+            }
+
+            .contact-btn {
+                width: 100% !important;
+                text-align: center !important;
+            }
+
+            /* VIDEOS & MEDIA - USE FULL WIDTH (Industry Standard) */
+            video {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                max-height: none !important;
+                margin: 1rem 0 !important;
+                display: block !important;
+            }
+
+            /* Override ANY video max-width constraint */
+            video[style*="max-width"] {
+                max-width: 100% !important;
+            }
+
+            /* GAMEPLAY IMAGES - Full Width, Not Constrained */
+            .project-detail img:not(.diagram-image) {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                max-height: none !important;
+                margin: 1rem 0 !important;
+                display: block !important;
+                object-fit: contain !important;
+            }
+
+            /* DIAGRAMS - Full Width, Tappable */
+            .diagram-image {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                cursor: pointer;
+                border: 2px solid #e2e8f0;
+                border-radius: 8px;
+                padding: 0.5rem;
+                background: white;
+                margin: 1rem 0 !important;
+            }
+
+            /* DIFFICULTY CURVE GRAPH - Full Width on Mobile */
+            div[style*="Difficulty Curve"] + div,
+            div[style*="position: relative; height: 400px"] {
+                height: 300px !important;
+                padding: 1rem 0.5rem !important;
+            }
+
+            div[style*="Session Time (minutes)"] {
+                font-size: 0.75rem !important;
+                bottom: -30px !important;
+            }
+
+            div[style*="Challenge Level"] {
+                font-size: 0.75rem !important;
+                left: -60px !important;
+            }
+
+            /* PROJECT CARDS - Full Width Stacking */
+            .project-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem;
+            }
+
+            /* NAVIGATION - Touch-Friendly */
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .nav-btn {
+                flex: 1;
+                min-width: 70px;
+                padding: 0.65rem 0.5rem;
+                font-size: 0.7rem;
+            }
+
+            .back-button {
+                padding: 0.65rem 1rem;
+                font-size: 0.875rem;
+            }
+
+            /* ITERATION SECTIONS - Stack Vertically */
+            .iteration-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* FLEX LAYOUTS - Force Vertical Stacking */
+            .project-detail [style*="display: flex"],
+            div[style*="display: flex"][style*="gap"] {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 1.5rem !important;
+            }
+
+            div[style*="display: flex"] > div,
+            div[style*="display: flex"] > img {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            /* INFO CARDS - Better centering and width on mobile */
+            .info-cards-grid {
+                padding: 0 0.5rem !important;
+                margin: 0 auto !important;
+                max-width: 100% !important;
+                justify-content: center !important;
+            }
+
+            .info-card {
+                padding: 1.5rem 1rem !important;
+                margin: 0 auto !important;
+                max-width: 100% !important;
+            }
+
+            /* GRID LAYOUTS - Force Single Column (Fixed) */
+            .project-detail [style*="display: grid"],
+            .project-detail [style*="grid-template-columns"],
+            div[style*="grid-template-columns: 1fr 1fr"],
+            div[style*="grid-template-columns"],
+            div[style*="repeat(3, 1fr)"],
+            div[style*="display: grid"] {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+
+            .project-detail [style*="grid"] > div,
+            div[style*="grid-template-columns"] > div {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-bottom: 0 !important;
+            }
+
+            /* Iterations grid specifically */
+            div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Route Percentages - Stack on Mobile */
+            div[style*="repeat(3, 1fr)"] > div {
+                text-align: center !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            /* COMPARISON SECTIONS - Videos Must Be Full Width */
+            .project-detail video[style*="height"],
+            div[style*="grid"] video[style*="height"] {
+                height: auto !important;
+                max-height: none !important;
+                width: 100% !important;
+            }
+
+            /* COMPARISON SECTION IMAGES - Full Width */
+            div[style*="grid"] img,
+            div[style*="display: flex"] img {
+                width: 100% !important;
+                height: auto !important;
+                max-height: none !important;
+            }
+
+            /* LOCKPICKING VIDEO - FORCE FULL WIDTH (Override inline styles) */
+            div[style*="background: #f7fafc"] video[style*="max-width"] {
+                max-width: none !important;
+                width: 100% !important;
+                margin: 0 0 1rem 0 !important;
+            }
+
+            /* Container - Remove padding and background on mobile */
+            div[style*="background: #f7fafc"][style*="padding: 2rem"] {
+                padding: 0 !important;
+                background: none !important;
+            }
+
+            /* Text inside - add minimal padding for readability */
+            div[style*="background: #f7fafc"] p,
+            div[style*="background: #f7fafc"] h4,
+            div[style*="background: #f7fafc"] div[style*="border-top"] {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+
+            /* Text inside video containers - better spacing */
+            div[style*="background: #f7fafc"] p {
+                padding: 0 0.25rem !important;
+                line-height: 1.6 !important;
+            }
+
+            /* Remove Extra Padding */
+            .project-detail > div {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
             }
         }
 
@@ -780,7 +1075,7 @@
                 <div class="project-details-grid">
                     <div class="project-detail-item">
                         <div class="project-detail-label">Engine</div>
-                        <div class="project-detail-value">Unreal Engine 5 (Nanite, Lumen)</div>
+                        <div class="project-detail-value">Unreal Engine 5</div>
                     </div>
                     <div class="project-detail-item">
                         <div class="project-detail-label">Development Time</div>
@@ -800,7 +1095,7 @@
                     </div>
                     <div class="project-detail-item">
                         <div class="project-detail-label">Version Control</div>
-                        <div class="project-detail-value">Perforce, Git workflows</div>
+                        <div class="project-detail-value">Perforce</div>
                     </div>
                 </div>
 
@@ -1181,7 +1476,7 @@
                         Grimhold Escape is a first-person stealth game inspired by titles like Dishonored and Thief, where you escape from a prison using cunning, stealth, and skill. The project's core challenge was designing a level that offers three distinctly different experiences while maintaining cohesive design principles and teaching players mechanics organically through environmental design.
                     </p>
                     <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
-                        As a 1-month solo blockout prototype, the project focused on core level design and gameplay validation without final art assets. This approach prioritized rapid iteration and mechanical testing, allowing faster prototyping to determine what worked before committing to visual polish. I designed and implemented a lockpicking mechanic building on genre conventions, adding continuous maintenance as a stressor to heighten tension during stealth gameplay.
+                        This was a 1-month solo blockout prototype. I focused on proving out the core level design and making sure the lockpicking mechanic worked well before worrying about visuals. Built a lockpicking system inspired by Skyrim/Fallout but added continuous pin rotation to create tension during stealth gameplay.
                     </p>
                     <p style="color: #4a5568; line-height: 1.7;">
                         This mechanic, combined with a non-linear prison environment where player choice drives the experience, creates distinct gameplay paths. Through multiple playtesting sessions with 10 participants, I gathered data on route preferences, completion times, and player behavior to refine the design and validate the three-path approach.
@@ -1233,11 +1528,11 @@
                     
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0;">
                         <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #e53e3e;">
-                            <h4 style="color: #e53e3e; font-weight: 700; margin-bottom: 0.75rem;">🏃 Parkour Route</h4>
-                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+                            <h4 style="color: #e53e3e; font-weight: 700; margin-bottom: 0.75rem; text-align: center;">Parkour Route</h4>
+                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; text-align: left;">
                                 Dynamic movement-focused path across prison rooftops. Emphasizes timing, spatial awareness, and risk-taking.
                             </p>
-                            <ul style="list-style: none; padding: 0; margin: 0;">
+                            <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
                                 <li style="color: #4a5568; font-size: 0.85rem; margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
                                     <span style="position: absolute; left: 0;">•</span> Fewest locks required
                                 </li>
@@ -1254,11 +1549,11 @@
                         </div>
 
                         <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #3182ce;">
-                            <h4 style="color: #3182ce; font-weight: 700; margin-bottom: 0.75rem;">🔍 Ventilation Route</h4>
-                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+                            <h4 style="color: #3182ce; font-weight: 700; margin-bottom: 0.75rem; text-align: center;">Ventilation Route</h4>
+                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; text-align: left;">
                                 Secret path through air ducts above the prison. Players spectate the horror below while navigating claustrophobic spaces.
                             </p>
-                            <ul style="list-style: none; padding: 0; margin: 0;">
+                            <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
                                 <li style="color: #4a5568; font-size: 0.85rem; margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
                                     <span style="position: absolute; left: 0;">•</span> Safest from guards
                                 </li>
@@ -1275,11 +1570,11 @@
                         </div>
 
                         <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #805ad5;">
-                            <h4 style="color: #805ad5; font-weight: 700; margin-bottom: 0.75rem;">🤫 Stealth Route</h4>
-                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+                            <h4 style="color: #805ad5; font-weight: 700; margin-bottom: 0.75rem; text-align: center;">Stealth Route</h4>
+                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; text-align: left;">
                                 Traditional stealth path through prison corridors. Most doors to unlock, most guards to avoid. Pure stealth mastery.
                             </p>
-                            <ul style="list-style: none; padding: 0; margin: 0;">
+                            <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
                                 <li style="color: #4a5568; font-size: 0.85rem; margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
                                     <span style="position: absolute; left: 0;">•</span> Most locks to pick
                                 </li>
@@ -1302,6 +1597,7 @@
                             <img 
                                 src="assets/images/grimhold/danylo-gorbachuk-grimhold-level-pacing.png" 
                                 alt="Grimhold Level Pacing Flowchart"
+                                class="diagram-image"
                                 onclick="openLightbox('assets/images/grimhold/danylo-gorbachuk-grimhold-level-pacing.png')"
                                 style="width: 100%; max-width: 1200px; height: auto; border-radius: 8px; margin: 0 auto; display: block; cursor: pointer; transition: opacity 0.2s;"
                                 onmouseover="this.style.opacity='0.8'"
@@ -1319,6 +1615,7 @@
                             <img 
                                 src="assets/images/grimhold/danylo-gorbachuk-grimhold-ipm-chart.png" 
                                 alt="Grimhold IPM Chart"
+                                class="diagram-image"
                                 onclick="openLightbox('assets/images/grimhold/danylo-gorbachuk-grimhold-ipm-chart.png')"
                                 style="width: 100%; max-width: 1200px; height: auto; border-radius: 8px; margin: 0 auto; display: block; cursor: pointer; transition: opacity 0.2s;"
                                 onmouseover="this.style.opacity='0.8'"
@@ -1506,7 +1803,7 @@
                         Cryostream Facility is a third-person environmental puzzle game where players navigate an abandoned superconductivity research facility to retrieve classified documents. The core gameplay revolves around manipulating water flow using switches and propellers to solve spatial puzzles, move objects, and unlock new areas across 14 interconnected sections.
                     </p>
                     <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
-                        As a 1-month solo blockout prototype, the project focused on core level design and gameplay validation without final art assets. This approach prioritized rapid iteration and mechanical testing to prove the water rerouting concept worked before committing to visual polish. The level takes players from forest exterior through facility cooling systems into the reactor core, culminating in a timed helicopter extraction escape.
+                        This was a 1-month solo blockout prototype. I focused on testing the water rerouting concept and making sure the puzzle worked before adding art. The level flows from forest exterior through cooling systems into the reactor core, ending with a timed helicopter escape.
                     </p>
                     <p style="color: #4a5568; line-height: 1.7;">
                         <strong>Project Scope:</strong> Solo designer, 1 month development, 14 areas, 5 major puzzles, 10-18 minute estimated completion time
@@ -1564,6 +1861,7 @@
                                 <img 
                                     src="assets/images/cryostream/danylo-gorbachuk-cryostream-level-pacing.png" 
                                     alt="Cryostream Facility Level Pacing Flowchart"
+                                    class="diagram-image"
                                     onclick="openLightbox('assets/images/cryostream/danylo-gorbachuk-cryostream-level-pacing.png')"
                                     style="width: 100%; max-width: 1400px; height: auto; border-radius: 8px; margin: 0 auto; display: block; cursor: pointer; transition: opacity 0.2s;"
                                     onmouseover="this.style.opacity='0.8'"
@@ -2287,15 +2585,6 @@
                             </div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-icon">Git</div>
-                            <div class="skill-info">
-                                <h4>Git</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
                             <div class="skill-icon">Trello</div>
                             <div class="skill-info">
                                 <h4>Trello</h4>
@@ -2322,7 +2611,6 @@
                         <span class="badge">C++ Programming (basics)</span>
                         <span class="badge">Python (basics)</span>
                         <span class="badge">Technical Documentation</span>
-                        <span class="badge">Git</span>
                         <span class="badge">Perforce</span>
                         <span class="badge">Version Control Systems</span>
                         <span class="badge">Quality Assurance</span>
@@ -2390,9 +2678,8 @@
                         </div>
 
                         <div class="contact-buttons">
-                            <a href="/cdn-cgi/l/email-protection#93f7f2fdeafffcd3f6ebf2fee3fff6bdf0fcfe" class="contact-btn">Email Me</a>
-                            <a href="#" class="contact-btn">LinkedIn</a>
-                            <a href="#" class="contact-btn">Portfolio Site</a>
+                            <button onclick="copyEmail()" class="contact-btn" id="copyEmailBtn">Copy Email</button>
+                            <a href="https://linkedin.com/in/danylo-gorbachuk/" target="_blank" class="contact-btn">LinkedIn</a>
                         </div>
                     </div>
                 </div>
@@ -2419,11 +2706,11 @@
                 </div>
 
                 <!-- Skills & Software Card -->
-                <div class="info-card">
+                <div class="info-card" style="text-align: left;">
                     <div class="skills-grid-footer">
                         <div>
-                            <h4 style="font-size: 1.125rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Skills</h4>
-                            <ul style="list-style: none; padding: 0; margin: 0;">
+                            <h4 style="font-size: 1.125rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem; text-align: left;">Skills</h4>
+                            <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
                                 <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Level Design</li>
                                 <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Game Mechanics Design</li>
                                 <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Systems Design</li>
@@ -2433,14 +2720,13 @@
                             </ul>
                         </div>
                         <div>
-                            <h4 style="font-size: 1.125rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Software</h4>
-                            <ul style="list-style: none; padding: 0; margin: 0;">
+                            <h4 style="font-size: 1.125rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem; text-align: left;">Software</h4>
+                            <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
                                 <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Unreal Engine 5</li>
                                 <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Atlassian JIRA</li>
                                 <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Atlassian Confluence</li>
                                 <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Perforce</li>
                                 <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Trello</li>
-                                <li style="color: #4a5568; margin-bottom: 0.5rem; font-size: 0.95rem;">Git</li>
                             </ul>
                         </div>
                     </div>
@@ -2539,6 +2825,31 @@
                 document.querySelector('[data-section="about"]').classList.add('active');
                 
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            // Copy email to clipboard function
+            window.copyEmail = function() {
+                const email = 'gorbachukdanylo@gmail.com';
+                const btn = document.getElementById('copyEmailBtn');
+                
+                navigator.clipboard.writeText(email).then(function() {
+                    // Show success feedback
+                    const originalText = btn.textContent;
+                    btn.textContent = '✓ Email Copied!';
+                    btn.style.background = '#38a169';
+                    
+                    // Reset after 2 seconds
+                    setTimeout(function() {
+                        btn.textContent = originalText;
+                        btn.style.background = '';
+                    }, 2000);
+                }).catch(function(err) {
+                    // Fallback for older browsers
+                    btn.textContent = 'gorbachukdanylo@gmail.com';
+                    setTimeout(function() {
+                        btn.textContent = 'Copy Email';
+                    }, 3000);
+                });
             };
         });
     </script>
