@@ -991,6 +991,16 @@
             <div class="content-card">
                 <h2 class="section-title">Personal Projects</h2>
                 <div class="portfolio-grid">
+                    <div class="project-card" data-project="escapeverity">
+                        <div class="project-image" style="background: url('assets/images/escapeverity/danylo-gorbachuk-escapeverity-card.webp') center/cover;">
+                            <div class="project-title" style="background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 8px;">ESCAPE<br>VERITY</div>
+                            <div class="project-overlay">
+                                <p class="project-description">
+                                    Mobile hide-and-seek horror for kids 6-10. Publisher test assignment: v1.0 in 12 days, 2 maps in 3 weeks, 60 FPS on Android.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="project-card" data-project="apocalypse1866">
                         <div class="project-image" style="background: url('assets/images/apocalypse/danylo-gorbachuk-apocalypse1866-card.png') center/cover;">
                             <div class="project-overlay">
@@ -1044,6 +1054,297 @@
         </section>
 
         <!-- Apocalypse 1866 Project Page -->
+        <section id="escapeverity" class="section">
+            <div class="content-card">
+                <div class="project-header">
+                    <button class="back-button" onclick="showPortfolio()">Back to Portfolio</button>
+                </div>
+
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h1 class="project-page-title">Escape.Verity</h1>
+                    <p class="project-subtitle">Mobile Hide-and-Seek Horror for Kids 6-10 - Test Assignment for a Kids' Mobile Games Publisher</p>
+                </div>
+
+                <div style="text-align: center; margin: 3rem 0;">
+                    <iframe
+                        width="100%"
+                        height="450"
+                        style="max-width: 900px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);"
+                        src="https://www.youtube.com/embed/_h4eelztOjY"
+                        title="Escape.Verity Demo"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                    <p style="font-size: 0.9rem; color: #666; text-align: center; margin-top: 1rem; font-style: italic;">
+                        Build demo sent to the publisher. The Verity character is third-party (by ThatMob), required by the brief.
+                    </p>
+                </div>
+
+                <div class="project-details-grid">
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Engine</div>
+                        <div class="project-detail-value">Unity 6 (URP, C#)</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Development Time</div>
+                        <div class="project-detail-value">v1.0 in 12 Days, 2 Maps in 3 Weeks</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Team Size</div>
+                        <div class="project-detail-value">Solo, AI-Assisted</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Role</div>
+                        <div class="project-detail-value">Game Designer / Producer</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Platform</div>
+                        <div class="project-detail-value">Android, 60 FPS on Mid-Range Device</div>
+                    </div>
+                    <div class="project-detail-item">
+                        <div class="project-detail-label">Audience</div>
+                        <div class="project-detail-value">Kids 6-10, Single-Player</div>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Project Overview</h3>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
+                        <strong>Brief:</strong> a horror-like single-player Android game built around Verity, an existing character, without breaking its lore. Audience 6-10: no blood, no hard jump scares, no wait timers, paid energy or loot boxes.
+                    </p>
+                    <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
+                        <strong>Concept from data, not taste:</strong> I shortlisted Roblox horror games by average daily playtime per user (romonitorstats), played each one, and sent the publisher 3 synopses: hide-and-seek escape (Piggy, Rainbow Friends, Forsaken), room-by-room run (DOORS), and a mini-game collection (Squid Game X). The publisher chose the escape.
+                    </p>
+                    <p style="color: #4a5568; line-height: 1.7;">
+                        <strong>Core idea:</strong> one hunter with two forms and opposite rules - <em>run from the Smiley, hide from the Monster</em>. Online co-op from the references became 3 friendly bots, since the brief was single-player.
+                    </p>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Core Loop</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div style="background: #f7fafc; padding: 1.25rem; border-radius: 8px; border-top: 4px solid #3182ce;">
+                            <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 0.5rem;">1. Start</h4>
+                            <p style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">Hero and 3 bot friends get locked in. 5 key parts and 4 crowbars spawn at random candidate points.</p>
+                        </div>
+                        <div style="background: #f7fafc; padding: 1.25rem; border-radius: 8px; border-top: 4px solid #d69e2e;">
+                            <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 0.5rem;">2. Challenge</h4>
+                            <p style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">Carry key parts one at a time to the exit door while Verity switches forms on a timer.</p>
+                        </div>
+                        <div style="background: #f7fafc; padding: 1.25rem; border-radius: 8px; border-top: 4px solid #e53e3e;">
+                            <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 0.5rem;">3. Capture</h4>
+                            <p style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">Verity carries you to a cage - no violence. Get out via a friend's crowbar, a lockpick mini-game or a character ability.</p>
+                        </div>
+                        <div style="background: #f7fafc; padding: 1.25rem; border-radius: 8px; border-top: 4px solid #38a169;">
+                            <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 0.5rem;">4. Escape</h4>
+                            <p style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">5/5 opens the door. Coins: 10 per run, 40 per escape. Lose if everyone is caged or the 8-minute timer runs out.</p>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-grab.webp" alt="Verity grabs the player in the Manor hall" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-grab.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
+                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-cage.webp" alt="Caught player locked in the cage" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-cage.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
+                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-lockpick.webp" alt="Lockpick mini-game inside the cage" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-lockpick.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
+                    </div>
+                    <p style="color: #718096; font-size: 0.85rem; text-align: center; margin-top: 0.75rem; font-style: italic;">
+                        Capture → cage → lockpick mini-game (added after publisher feedback). Manor map, in-game footage.
+                    </p>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Verity: One Hunter, Two Rule Sets</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="background: #f7fafc; padding: 1.25rem; border-radius: 8px;">
+                            <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 0.5rem;">Smiley - 50 s</h4>
+                            <p style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">0.75x player speed. Sees and pulls out hidden players. <strong>Run.</strong></p>
+                        </div>
+                        <div style="background: #f7fafc; padding: 1.25rem; border-radius: 8px;">
+                            <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 0.5rem;">Signal - 3 s</h4>
+                            <p style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">Stands still. A fair warning window to reach a hiding spot.</p>
+                        </div>
+                        <div style="background: #f7fafc; padding: 1.25rem; border-radius: 8px;">
+                            <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 0.5rem;">Monster - 15-18 s</h4>
+                            <p style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">1.34x player speed. Ignores hiding spots unless it saw you hide. <strong>Hide.</strong></p>
+                        </div>
+                    </div>
+                    <p style="color: #718096; font-size: 0.85rem; margin: -0.75rem 0 1.5rem; font-style: italic;">Manor timing: 40 / 3 / 40 s.</p>
+                    <div class="challenge-item">
+                        <h4>Enemy AI</h4>
+                        <p><strong>States:</strong> Patrol → Chase → Search (goes to last known point, waits 4 s) → Force Out → Grab → Carry → Lock. While grabbing and carrying, Verity chases no one - the window for others to run.</p>
+                        <p><strong>Senses:</strong> 15 m sight radius, 180° view, line-of-sight check every 0.2 s, 4 m close radius at any angle, 1 s memory.</p>
+                        <p><strong>Kid-safe tuning:</strong> capture is a shoulder carry, not an attack; the Smiley is unlit so Verity always reads in the dark; kids' voices are quieter than Verity's.</p>
+                    </div>
+                    <div style="background: #f7fafc; padding: 2rem; border-radius: 8px;">
+                        <img
+                            src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-verity-animations.webp"
+                            alt="Verity monster form: walk, grab, shoulder carry, put down"
+                            loading="lazy" class="diagram-image"
+                            onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-verity-animations.webp')"
+                            style="width: 100%; max-width: 900px; height: auto; border-radius: 8px; margin: 0 auto; display: block; cursor: pointer; transition: opacity 0.2s;"
+                            onmouseover="this.style.opacity='0.8'"
+                            onmouseout="this.style.opacity='1'">
+                        <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-top: 1rem; text-align: center; font-style: italic;">
+                            Monster form: walk → grab → shoulder carry → put down. Capture without violence.<br>
+                            <span style="color: #718096; font-size: 0.85rem;">(Click to enlarge)</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Key Design Decisions</h3>
+
+                    <div class="challenge-item">
+                        <h4>1. Every Hiding Spot Within One Signal</h4>
+                        <p><strong>Problem:</strong> A Monster catch feels unfair if no hiding spot is reachable in time.</p>
+                        <p><strong>Solution:</strong> 3 s signal at 5 m/s = 15 m of running. I placed hiding spots with a 12 m limit and checked it against the NavMesh.</p>
+                        <p><strong>Why:</strong> The 3 m margin covers a child's reaction time.</p>
+                        <p><strong>Result:</strong> Worst path to cover: 12.2 m in the School, 14.1 m in the Manor; 0 points farther than 15 m.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>2. Make the Chase Visible to the Player</h4>
+                        <p><strong>Problem:</strong> In my tests Verity rarely chased the player: it went for the nearest visible target and caught bots off-screen.</p>
+                        <p><strong>Solution:</strong> If both are visible, target the hero at 65%; ignore unwitnessed bots at 75% (90% after the first capture); hold the decision for 6 s; 60% of patrol points are picked near the player.</p>
+                        <p><strong>Why:</strong> Fear comes from a chase the player sees, not from bots disappearing.</p>
+                        <p><strong>Result:</strong> Not measured; in my playtests the threat felt real and tension rose.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>3. Crowbar as a Held Item, 2 → 4 per Map</h4>
+                        <p><strong>Problem:</strong> My tests: "very hard to win with 4 keys collected - by then all bots are often caged."</p>
+                        <p><strong>Solution:</strong> The crowbar went from a HUD counter to an item in hand that opens the cage for everyone; 4 crowbars instead of 2; bots remember where they dropped a key part.</p>
+                        <p><strong>Why:</strong> The end of a run should not stall on the last key part, and you should see who holds the crowbar.</p>
+                        <p><strong>Result:</strong> Not measured separately.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>4. Camera Through Interior Walls</h4>
+                        <p><strong>Problem:</strong> Publisher feedback: in small classrooms the orbit camera hit walls and jumped in doorways.</p>
+                        <p><strong>Solution:</strong> The camera collides only with outer walls, floors and ceilings; interior walls fade out; radius 5 → 3.5 → 4 m after my tests.</p>
+                        <p><strong>Why:</strong> The reference was the Roblox camera the audience already knows: orbit behind the back, never blocked by walls.</p>
+                        <p><strong>Result:</strong> Doorway camera jumps: 33 of 48 passes → 0 of 12. The publisher noted the overall improvement in v1.5.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>5. 60 FPS on Android Without Lowering Resolution</h4>
+                        <p><strong>Problem:</strong> ~31 FPS on the test phone, then 33 ms frame spikes.</p>
+                        <p><strong>Solution:</strong> Frame pacing (Swappy); furniture baked into lightmaps instead of Light Probes, which restored static batching (1099 → 241 batches); occlusion culling and LODs in the Manor.</p>
+                        <p><strong>Why:</strong> I rejected Render Scale 0.65 - the image quality loss was not worth it.</p>
+                        <p><strong>Result (Nothing A063):</strong> avg 58.5 → 60.1 FPS, 1% low 30 → 59.5; 0 frames over 33 ms out of 2,405. Manor GPU 16.1 → 13.0 ms.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Level Design</h3>
+
+                    <div class="challenge-item">
+                        <h4>School (Main Map)</h4>
+                        <p>44×44 m, 2 floors, 19 rooms around a 4.6 m ring corridor, ramps instead of stairs. Geometry simplified from the Dead by Daylight school.</p>
+                        <p>Built with an editor generator from my rules (max 2 rooms in a chain, 1 dead end), then hand-edited. 32 hiding spots (15 lockers, 17 desks). Key parts: 5 of 10 points, ≥8 m apart, ≥1 per floor - checked over 20,000 simulated spawns.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Manor (Second Map)</h4>
+                        <p>House, basement, 70×70 m hedge garden and front yard. A secret crouch-only crawlspace (fireplace ↔ basement, 17.1 m) that the Monster and bots cannot follow.</p>
+                        <p>49 hiding spots, 14 key zones with 28 candidate points. A validator runs 109 checks (reachability, path widths, loops, distance to cover); my 571 hand edits survive regeneration.</p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-corridor.webp" alt="School ring corridor with lockers" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-corridor.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
+                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-yard.webp" alt="School inner yard" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-yard.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
+                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-exterior.webp" alt="School exterior at the escape ending" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-exterior.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
+                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-garden.webp" alt="Manor hedge garden with gazebo" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-garden.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
+                    </div>
+                    <p style="color: #718096; font-size: 0.85rem; text-align: center; margin-top: 0.75rem; font-style: italic;">
+                        School: ring corridor, inner yard, exterior. Manor: hedge garden. Baked lighting only - dim, but characters always read.
+                    </p>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Publisher Feedback → Changes</h3>
+                    <div class="challenge-item">
+                        <h4>v1.0 (Day 12) → v1.5 (Day 14)</h4>
+                        <p><strong>Caught players need something to do</strong> → lockpick mini-game inside the cage.</p>
+                        <p><strong>Unlocking characters should change gameplay</strong> → 7 characters, 6 with abilities (break free, highlight a key, free friends, speed boost after hiding).</p>
+                        <p><strong>Characters should talk</strong> → intro and escape cutscenes with dialogue; later ~70 voiced lines for friends.</p>
+                        <p><strong>Goal unclear, camera in small rooms, English first</strong> → goal hint, camera fix, 14 languages with English as default.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h4>v1.5 → Second Map</h4>
+                        <p>The publisher's position: one map = soft launch only; paid traffic after a new location. I built the Manor in 5 days. After the demo, the next step discussed was release. The game was not released: we did not agree on contract terms.</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">What I Cut and Why</h3>
+                    <ul style="color: #4a5568; line-height: 1.8; padding-left: 1.25rem;">
+                        <li><strong>25 s cage timeout loss</strong> - it ended runs while escape options were still left.</li>
+                        <li><strong>Accessories (hats, glasses)</strong> - replaced with 7 characters with abilities, per the feedback that unlocks must matter.</li>
+                        <li><strong>Post-processing and Render Scale 0.65</strong> - +5 ms GPU / visibly worse image; lamp glow is done in a shader.</li>
+                        <li><strong>Verity clones per map, skins, traps</strong> - out of prototype scope (one hunter, then a second map).</li>
+                    </ul>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">How I Worked: Solo, AI-Assisted</h3>
+                    <div style="background: #f7fafc; padding: 1.5rem 2rem; border-radius: 8px; border-left: 4px solid #805ad5;">
+                        <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
+                            I worked as designer and producer of an AI team. <strong>Claude Code</strong> wrote the code (~42k lines of C#, 146 commits) from my tasks; art was produced in <strong>Codex / Claude Code</strong> through my concept → Blender → Unity pipeline; voices in Fish Audio.
+                        </p>
+                        <p style="color: #4a5568; line-height: 1.7;">
+                            <strong>Mine:</strong> market research and 3 synopses, game and level design, enemy and bot AI design and tuning, UX, task breakdown and acceptance, hand-editing maps in the Unity editor, all on-device playtests, and handling publisher feedback.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Key Design Contributions</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Picked the concept from competitor playtime data and pitched 3 synopses to the publisher
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Designed the two-form hunter ("run from the Smiley, hide from the Monster") with a 3 s fair-warning signal
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Designed and tuned enemy AI (7 states, target selection) and 3 bot personalities that replace online co-op
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Built 2 maps with generator rules, NavMesh-validated hiding spot coverage and hand edits
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Shipped v1.0 in 12 days and turned the first round of publisher feedback into v1.5 in 2 days
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Set kid-safe constraints: no blood or scares, no paywalls or loot boxes, non-violent capture
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Drove Android performance from ~31 to 60 FPS with an on-device benchmark (60+ A/B configurations)
+                        </li>
+                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
+                            Wrote the design core and rules document that steered the AI agents
+                        </li>
+                    </ul>
+                    <p style="color: #718096; font-size: 0.85rem; margin-top: 1.5rem; font-style: italic;">
+                        Verity (character and name) is third-party, by ThatMob, required by the brief; the models are my interpretation. Unofficial fan game. Music: Epidemic Sound (licensed).
+                    </p>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://www.youtube.com/watch?v=_h4eelztOjY" target="_blank" class="project-link-btn primary">Watch Full Demo (5 min)</a>
+                </div>
+            </div>
+        </section>
+
         <section id="apocalypse1866" class="section">
             <div class="content-card">
                 <!-- Project Banner -->
@@ -2786,7 +3087,9 @@
                     navButtons.forEach(btn => btn.classList.remove('active'));
                     
                     // Show the selected project page
-                    if (projectId === 'apocalypse1866') {
+                    if (projectId === 'escapeverity') {
+                        document.getElementById('escapeverity').classList.add('active');
+                    } else if (projectId === 'apocalypse1866') {
                         document.getElementById('apocalypse1866').classList.add('active');
                     } else if (projectId === 'grimhold') {
                         document.getElementById('grimhold').classList.add('active');
