@@ -996,7 +996,7 @@
                             <div class="project-title" style="background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 8px;">ESCAPE<br>VERITY</div>
                             <div class="project-overlay">
                                 <p class="project-description">
-                                    Mobile hide-and-seek horror for kids 6-10. Publisher test assignment: v1.0 in 12 days, 2 maps in 3 weeks, 60 FPS on Android.
+                                    Mobile hide-and-seek horror for kids 6-10. Publisher test assignment: first playable in 12 days, 2 maps in 3 weeks, 60 FPS on Android.
                                 </p>
                             </div>
                         </div>
@@ -1071,6 +1071,7 @@
                         height="450"
                         style="max-width: 900px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);"
                         src="https://www.youtube.com/embed/_h4eelztOjY"
+                        referrerpolicy="strict-origin-when-cross-origin"
                         title="Escape.Verity Demo"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1089,7 +1090,7 @@
                     </div>
                     <div class="project-detail-item">
                         <div class="project-detail-label">Development Time</div>
-                        <div class="project-detail-value">v1.0 in 12 Days, 2 Maps in 3 Weeks</div>
+                        <div class="project-detail-value">First Playable in 12 Days, 2 Maps in 3 Weeks</div>
                     </div>
                     <div class="project-detail-item">
                         <div class="project-detail-label">Team Size</div>
@@ -1223,7 +1224,7 @@
                         <p><strong>Problem:</strong> Publisher feedback: in small classrooms the orbit camera hit walls and jumped in doorways.</p>
                         <p><strong>Solution:</strong> The camera collides only with outer walls, floors and ceilings; interior walls fade out; radius 5 → 3.5 → 4 m after my tests.</p>
                         <p><strong>Why:</strong> The reference was the Roblox camera the audience already knows: orbit behind the back, never blocked by walls.</p>
-                        <p><strong>Result:</strong> Doorway camera jumps: 33 of 48 passes → 0 of 12. The publisher noted the overall improvement in v1.5.</p>
+                        <p><strong>Result:</strong> Doorway camera jumps: 33 of 48 passes → 0 of 12. The publisher noted the overall improvement in the feedback build.</p>
                     </div>
 
                     <div class="challenge-item">
@@ -1250,28 +1251,41 @@
                         <p>49 hiding spots, 14 key zones with 28 candidate points. A validator runs 109 checks (reachability, path widths, loops, distance to cover); my 571 hand edits survive regeneration.</p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
-                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-corridor.webp" alt="School ring corridor with lockers" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-corridor.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
-                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-yard.webp" alt="School inner yard" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-yard.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
-                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-exterior.webp" alt="School exterior at the escape ending" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-exterior.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
-                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-garden.webp" alt="Manor hedge garden with gazebo" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-garden.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-manor-concept-1.webp" alt="Manor top-down level concept, iteration 1" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-manor-concept-1.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
+                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-manor-concept-2.webp" alt="Manor top-down level concept, iteration 2" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-manor-concept-2.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
                     </div>
                     <p style="color: #718096; font-size: 0.85rem; text-align: center; margin-top: 0.75rem; font-style: italic;">
-                        School: ring corridor, inner yard, exterior. Manor: hedge garden. Baked lighting only - dim, but characters always read.
+                        Manor top-down concepts, iterations 1 → 2: generated with Codex from my brief and used as the blueprint for the blockout. Final build: 4 crowbars, 3 m garden paths.
+                    </p>
+
+                    <h4 style="color: #2d3748; font-weight: 700; margin: 2rem 0 1rem;">Atmosphere Pass After Publisher Feedback</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                        <div>
+                            <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-lighting-before.webp" alt="School corridor at First Playable: flat lighting" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-lighting-before.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
+                            <p style="color: #718096; font-size: 0.85rem; text-align: center; margin-top: 0.5rem;"><strong>Before</strong> - First Playable (Day 12): flat light</p>
+                        </div>
+                        <div>
+                            <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-lighting-after.webp" alt="School corridor after the atmosphere pass: baked dim lighting" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-lighting-after.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
+                            <p style="color: #718096; font-size: 0.85rem; text-align: center; margin-top: 0.5rem;"><strong>After</strong> - baked lights, dim but readable, fog</p>
+                        </div>
+                    </div>
+                    <p style="color: #718096; font-size: 0.85rem; text-align: center; margin-top: 0.75rem; font-style: italic;">
+                        Baked lighting only, no realtime lights - horror mood for a 6-10 audience while characters always read, at 60 FPS on Android.
                     </p>
                 </div>
 
                 <div style="margin: 2rem 0;">
                     <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Publisher Feedback → Changes</h3>
                     <div class="challenge-item">
-                        <h4>v1.0 (Day 12) → v1.5 (Day 14)</h4>
+                        <h4>Milestone 1: First Playable (Day 12) → Milestone 2: Feedback Build (Day 14)</h4>
                         <p><strong>Caught players need something to do</strong> → lockpick mini-game inside the cage.</p>
                         <p><strong>Unlocking characters should change gameplay</strong> → 7 characters, 6 with abilities (break free, highlight a key, free friends, speed boost after hiding).</p>
                         <p><strong>Characters should talk</strong> → intro and escape cutscenes with dialogue; later ~70 voiced lines for friends.</p>
                         <p><strong>Goal unclear, camera in small rooms, English first</strong> → goal hint, camera fix, 14 languages with English as default.</p>
                     </div>
                     <div class="challenge-item">
-                        <h4>v1.5 → Second Map</h4>
+                        <h4>Milestone 2 → Milestone 3: Second Map (Day 21)</h4>
                         <p>The publisher's position: one map = soft launch only; paid traffic after a new location. I built the Manor in 5 days. After the demo, the next step discussed was release. The game was not released: we did not agree on contract terms.</p>
                     </div>
                 </div>
@@ -1319,7 +1333,7 @@
                         </li>
                         <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
                             <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
-                            Shipped v1.0 in 12 days and turned the first round of publisher feedback into v1.5 in 2 days
+                            Delivered a first playable in 12 days and a feedback build 2 days later
                         </li>
                         <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
                             <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
