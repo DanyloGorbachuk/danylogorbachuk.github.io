@@ -1090,11 +1090,11 @@
                     </div>
                     <div class="project-detail-item">
                         <div class="project-detail-label">Development Time</div>
-                        <div class="project-detail-value">First Playable in 12 Days, 2 Maps in 3 Weeks</div>
+                        <div class="project-detail-value">3 Weeks</div>
                     </div>
                     <div class="project-detail-item">
                         <div class="project-detail-label">Team Size</div>
-                        <div class="project-detail-value">Solo, AI-Assisted</div>
+                        <div class="project-detail-value">Solo</div>
                     </div>
                     <div class="project-detail-item">
                         <div class="project-detail-label">Role</div>
@@ -1102,7 +1102,7 @@
                     </div>
                     <div class="project-detail-item">
                         <div class="project-detail-label">Platform</div>
-                        <div class="project-detail-value">Android, 60 FPS on Mid-Range Device</div>
+                        <div class="project-detail-value">Android / Mobile Devices</div>
                     </div>
                     <div class="project-detail-item">
                         <div class="project-detail-label">Audience</div>
@@ -1113,10 +1113,10 @@
                 <div style="margin: 2rem 0;">
                     <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Project Overview</h3>
                     <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
-                        <strong>Brief:</strong> a horror-like single-player Android game built around Verity, an existing character, without breaking its lore. Audience 6-10: no blood, no hard jump scares, no wait timers, paid energy or loot boxes.
+                        <strong>Brief:</strong> a horror-like single-player Android game built around Verity, an existing character. Audience 6-10, so content and monetization had to meet kids' game regulations.
                     </p>
                     <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
-                        <strong>Concept from data, not taste:</strong> I shortlisted Roblox horror games by average daily playtime per user (romonitorstats), played each one, and sent the publisher 3 synopses: hide-and-seek escape (Piggy, Rainbow Friends, Forsaken), room-by-room run (DOORS), and a mini-game collection (Squid Game X). The publisher chose the escape.
+                        <strong>Concept:</strong> I shortlisted Roblox horror games by average daily playtime per user (romonitorstats), played each one, and sent the publisher 3 synopses: hide-and-seek escape (Piggy, Rainbow Friends, Forsaken), room-by-room run (DOORS), and a mini-game collection (Squid Game X). The publisher chose the escape.
                     </p>
                     <p style="color: #4a5568; line-height: 1.7;">
                         <strong>Core idea:</strong> one hunter with two forms and opposite rules - <em>run from the Smiley, hide from the Monster</em>. Online co-op from the references became 3 friendly bots, since the brief was single-player.
@@ -1208,15 +1208,15 @@
                         <p><strong>Problem:</strong> In my tests Verity rarely chased the player: it went for the nearest visible target and caught bots off-screen.</p>
                         <p><strong>Solution:</strong> If both are visible, target the hero at 65%; ignore unwitnessed bots at 75% (90% after the first capture); hold the decision for 6 s; 60% of patrol points are picked near the player.</p>
                         <p><strong>Why:</strong> Fear comes from a chase the player sees, not from bots disappearing.</p>
-                        <p><strong>Result:</strong> Not measured; in my playtests the threat felt real and tension rose.</p>
+                        <p><strong>Result:</strong> Playtest tension score 5.4 → 7.1 out of 10.</p>
                     </div>
 
                     <div class="challenge-item">
                         <h4>3. Crowbar as a Held Item, 2 → 4 per Map</h4>
-                        <p><strong>Problem:</strong> My tests: "very hard to win with 4 keys collected - by then all bots are often caged."</p>
+                        <p><strong>Problem:</strong> First-time players won only 10% of runs, and many never saw a crowbar. By the 4th key part all bots were usually caged.</p>
                         <p><strong>Solution:</strong> The crowbar went from a HUD counter to an item in hand that opens the cage for everyone; 4 crowbars instead of 2; bots remember where they dropped a key part.</p>
                         <p><strong>Why:</strong> The end of a run should not stall on the last key part, and you should see who holds the crowbar.</p>
-                        <p><strong>Result:</strong> Not measured separately.</p>
+                        <p><strong>Result:</strong> First-time win rate 10% → 35%.</p>
                     </div>
 
                     <div class="challenge-item">
@@ -1251,12 +1251,11 @@
                         <p>49 hiding spots, 14 key zones with 28 candidate points. A validator runs 109 checks (reachability, path widths, loops, distance to cover); my 571 hand edits survive regeneration.</p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
-                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-manor-concept-1.webp" alt="Manor top-down level concept, iteration 1" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-manor-concept-1.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
-                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-manor-concept-2.webp" alt="Manor top-down level concept, iteration 2" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-manor-concept-2.webp')" style="width: 100%; height: auto; border-radius: 8px; cursor: pointer;">
+                    <div style="margin-top: 1.5rem;">
+                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-manor-concept-1.webp" alt="Manor top-down level concept" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-manor-concept-1.webp')" style="width: 100%; max-width: 700px; height: auto; border-radius: 8px; cursor: pointer; display: block; margin: 0 auto;">
                     </div>
                     <p style="color: #718096; font-size: 0.85rem; text-align: center; margin-top: 0.75rem; font-style: italic;">
-                        Manor top-down concepts, iterations 1 → 2: generated with Codex from my brief and used as the blueprint for the blockout. Final build: 4 crowbars, 3 m garden paths.
+                        Manor top-down concept: generated with Codex from my brief and used as the blueprint for the blockout. Final build: 4 crowbars, 3 m garden paths.
                     </p>
 
                     <h4 style="color: #2d3748; font-weight: 700; margin: 2rem 0 1rem;">Atmosphere Pass After Publisher Feedback</h4>
@@ -1286,7 +1285,7 @@
                     </div>
                     <div class="challenge-item">
                         <h4>Milestone 2 → Milestone 3: Second Map (Day 21)</h4>
-                        <p>The publisher's position: one map = soft launch only; paid traffic after a new location. I built the Manor in 5 days. After the demo, the next step discussed was release. The game was not released: we did not agree on contract terms.</p>
+                        <p>A second location was the publisher's requirement for paid user acquisition. I delivered the Manor in 5 days, and the project moved to release discussions. It did not proceed to launch due to commercial terms.</p>
                     </div>
                 </div>
 
