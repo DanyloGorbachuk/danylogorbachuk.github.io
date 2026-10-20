@@ -1479,7 +1479,7 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
                         <div style="background: #f7fafc; padding: 1.5rem; border-radius: 8px;">
                             <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Initial Blockout Phase</h4>
-                            <video preload="none" 
+                            <video data-poster="assets/images/apocalypse/danylo-gorbachuk-apocalypse1866-blockout-thumbnail.webp" preload="none" 
                                 data-autoplay 
                                 loop 
                                 muted 
@@ -1494,7 +1494,7 @@
                         
                         <div style="background: #f7fafc; padding: 1.5rem; border-radius: 8px;">
                             <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Final Implementation</h4>
-                            <video preload="none" 
+                            <video data-poster="assets/images/apocalypse/danylo-gorbachuk-apocalypse1866-final-level-thumbnail.webp" preload="none" 
                                 data-autoplay 
                                 loop 
                                 muted 
@@ -1512,7 +1512,7 @@
                         <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Upgrade System UI Evolution</h4>
                         <div style="display: flex; align-items: center; gap: 2rem; background: #f7fafc; padding: 1.5rem; border-radius: 8px;">
                             <div style="flex: 1;">
-                                <video preload="none" 
+                                <video data-poster="assets/images/apocalypse/danylo-gorbachuk-apocalypse1866-early-ui-thumbnail.webp" preload="none" 
                                     data-autoplay 
                                     loop 
                                     muted 
@@ -1526,7 +1526,7 @@
                             <div style="color: #2d3748; font-size: 2rem; font-weight: bold;">→</div>
                             
                             <div style="flex: 1;">
-                                <video preload="none" 
+                                <video data-poster="assets/images/apocalypse/danylo-gorbachuk-apocalypse1866-final-ui-thumbnail.webp" preload="none" 
                                     data-autoplay 
                                     loop 
                                     muted 
@@ -1846,7 +1846,7 @@
                     <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Lockpicking Mechanic Design</h3>
                     
                     <div style="background: #f7fafc; padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-                        <video preload="none" 
+                        <video data-poster="assets/images/grimhold/danylo-gorbachuk-grimhold-lockpick-thumbnail.webp" preload="none" 
                             data-autoplay 
                             loop 
                             muted 
@@ -2174,12 +2174,11 @@
 
                     <div style="margin: 2rem 0; text-align: center;">
                         <h4 style="color: #2d3748; font-weight: 600; margin-bottom: 1rem;">Water Mechanics Demonstration</h4>
-                        <video preload="none" 
+                        <video data-poster="assets/images/cryostream/danylo-gorbachuk-cryostream-mechanics-thumbnail.webp" preload="none" 
                             data-autoplay
                             muted
                             loop
                             style="width: 100%; max-width: 900px; height: auto; border-radius: 8px;"
-                            poster="assets/images/cryostream/danylo-gorbachuk-cryostream-mechanics-thumbnail.webp"
                             title="Cryostream Water Mechanics Testing">
                             <source src="assets/videos/cryostream/danylo-gorbachuk-cryostream-mechanics.mp4" type="video/mp4">
                             Your browser does not support the video tag.
@@ -2502,12 +2501,11 @@
 
                     <div style="margin: 2rem 0; text-align: center;">
                         <h4 style="color: #2d3748; font-weight: 600; margin-bottom: 1rem;">Original Platformer Gameplay</h4>
-                        <video preload="none" 
+                        <video data-poster="assets/images/sagevsslime/danylo-gorbachuk-sagevsslime-platformer-thumbnail.webp" preload="none" 
                             data-autoplay
                             muted
                             loop
                             style="width: 100%; max-width: 900px; height: auto; border-radius: 8px;"
-                            poster="assets/images/sagevsslime/danylo-gorbachuk-sagevsslime-platformer-thumbnail.webp"
                             title="Sage vs Slime Platformer">
                             <source src="assets/videos/sagevsslime/danylo-gorbachuk-sagevsslime-platformer.mp4" type="video/mp4">
                             Your browser does not support the video tag.
@@ -3160,8 +3158,24 @@
             window.showSkills = function() { navigate('skills'); };
             window.showAbout = function() { navigate('about'); };
 
-            // Demo videos load and play only while visible on screen
-            const videoObserver = new IntersectionObserver(entries => {
+            // Demo videos: poster and buffering start ~1.5 screens ahead, playback only while visible
+            const demoVideos = document.querySelectorAll('video[data-autoplay]');
+
+            function warmVideo(video) {
+                if (video.dataset.poster && !video.poster) video.poster = video.dataset.poster;
+                if (video.preload !== 'auto') {
+                    video.preload = 'auto';
+                    video.load();
+                }
+            }
+
+            const nearObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) warmVideo(entry.target);
+                });
+            }, { rootMargin: '150% 0px' });
+
+            const playObserver = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.play().catch(() => {});
@@ -3170,7 +3184,114 @@
                     }
                 });
             }, { threshold: 0.5 });
-            document.querySelectorAll('video[data-autoplay]').forEach(video => videoObserver.observe(video));
+
+            demoVideos.forEach(video => {
+                nearObserver.observe(video);
+                playObserver.observe(video);
+            });
+
+            // Background loading: after the page is idle, fetch other pages' images and videos one by one.
+            // Skipped with Save-Data or on 2G/3G; videos only on Wi-Fi or fast 4G (iOS does not report the network type)
+            const connection = navigator.connection;
+            const backgroundAllowed = !(connection && (connection.saveData || /2g|3g/.test(connection.effectiveType || '')));
+            const videosAllowed = backgroundAllowed && !(connection && (connection.type === 'cellular' || (connection.effectiveType && connection.effectiveType !== '4g')));
+
+            const sectionOrder = [...document.querySelectorAll('.project-card')]
+                .map(card => card.getAttribute('data-project'))
+                .concat(['skills', 'about']);
+            const sectionTasks = {};
+            sectionOrder.forEach(id => {
+                const section = document.getElementById(id);
+                if (!section) return;
+                const posters = [...section.querySelectorAll('video[data-poster]')].map(video => video.dataset.poster);
+                const images = posters
+                    .concat([...section.querySelectorAll('img[loading="lazy"]')].map(img => img.getAttribute('src')))
+                    .filter(Boolean)
+                    .map(src => ({ type: 'image', src }));
+                const videos = videosAllowed
+                    ? [...section.querySelectorAll('video[data-autoplay]')].map(video => ({ type: 'video', video }))
+                    : [];
+                sectionTasks[id] = images.concat(videos);
+            });
+
+            function loadImage(src) {
+                return new Promise(resolve => {
+                    const img = new Image();
+                    img.fetchPriority = 'low';
+                    img.onload = img.onerror = resolve;
+                    img.src = src;
+                });
+            }
+
+            function loadVideo(video) {
+                return new Promise(resolve => {
+                    if (video.readyState >= 4) return resolve();
+                    const done = () => {
+                        clearTimeout(timer);
+                        video.removeEventListener('canplaythrough', done);
+                        video.removeEventListener('error', done);
+                        resolve();
+                    };
+                    const timer = setTimeout(done, 15000);
+                    video.addEventListener('canplaythrough', done);
+                    video.addEventListener('error', done);
+                    warmVideo(video);
+                });
+            }
+
+            // Moves a section to the front of the queue (opened or about to be opened)
+            function prioritize(id) {
+                const index = sectionOrder.indexOf(id);
+                if (index > 0) {
+                    sectionOrder.splice(index, 1);
+                    sectionOrder.unshift(id);
+                }
+            }
+
+            let queueRunning = false;
+            async function runQueue() {
+                if (queueRunning || !backgroundAllowed) return;
+                queueRunning = true;
+                while (true) {
+                    const id = sectionOrder.find(sectionId => sectionTasks[sectionId] && sectionTasks[sectionId].length);
+                    if (!id) break;
+                    const task = sectionTasks[id].shift();
+                    if (task.type === 'image') await loadImage(task.src);
+                    else await loadVideo(task.video);
+                }
+                queueRunning = false;
+            }
+
+            function startQueueWhenIdle() {
+                const start = () => runQueue();
+                if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 3000 });
+                else setTimeout(start, 1500);
+            }
+            if (document.readyState === 'complete') startQueueWhenIdle();
+            else window.addEventListener('load', startQueueWhenIdle);
+
+            // Intent: touching, hovering or focusing a card moves its project to the front of the queue
+            document.querySelectorAll('.project-card').forEach(card => {
+                const intent = () => {
+                    prioritize(card.getAttribute('data-project'));
+                    runQueue();
+                };
+                card.addEventListener('pointerenter', intent);
+                card.addEventListener('touchstart', intent, { passive: true });
+                card.addEventListener('focus', intent);
+            });
+            window.addEventListener('hashchange', () => prioritize(location.hash.slice(1)));
+            if (location.hash) prioritize(location.hash.slice(1));
+
+            // Early connection to YouTube for the first project's video
+            if (backgroundAllowed) {
+                ['https://i.ytimg.com', 'https://www.youtube-nocookie.com'].forEach(origin => {
+                    const link = document.createElement('link');
+                    link.rel = 'preconnect';
+                    link.href = origin;
+                    document.head.appendChild(link);
+                });
+            }
 
             // YouTube: thumbnail first, the player loads on click
             document.querySelectorAll('.yt-lite').forEach(box => {
