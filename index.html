@@ -996,7 +996,7 @@
                             <div class="project-title" style="background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 8px;">ESCAPE<br>VERITY</div>
                             <div class="project-overlay">
                                 <p class="project-description">
-                                    Mobile hide-and-seek horror for kids 6-10. Publisher test assignment: first playable in 12 days, 2 maps in 3 weeks, 60 FPS on Android.
+                                    Mobile hide-and-seek horror for kids 6-10. Test assignment for a mobile games publisher, built in 3 weeks.
                                 </p>
                             </div>
                         </div>
@@ -1062,7 +1062,7 @@
 
                 <div style="text-align: center; margin-bottom: 3rem;">
                     <h1 class="project-page-title">Escape.Verity</h1>
-                    <p class="project-subtitle">Mobile Hide-and-Seek Horror for Kids 6-10 - Test Assignment for a Kids' Mobile Games Publisher</p>
+                    <p class="project-subtitle">Mobile Hide-and-Seek Horror · Test Assignment for a Kids' Mobile Games Publisher</p>
                 </div>
 
                 <div style="text-align: center; margin: 3rem 0;">
@@ -1106,7 +1106,7 @@
                     </div>
                     <div class="project-detail-item">
                         <div class="project-detail-label">Audience</div>
-                        <div class="project-detail-value">Kids 6-10, Single-Player</div>
+                        <div class="project-detail-value">Kids 6-10</div>
                     </div>
                 </div>
 
@@ -1140,7 +1140,7 @@
                         </div>
                         <div style="background: #f7fafc; padding: 1.25rem; border-radius: 8px; border-top: 4px solid #38a169;">
                             <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 0.5rem;">4. Escape</h4>
-                            <p style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">5/5 opens the door. Coins: 10 per run, 40 per escape. Lose if everyone is caged or the 8-minute timer runs out.</p>
+                            <p style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">5/5 opens the door. Lose if everyone is caged or the 8-minute timer runs out.</p>
                         </div>
                     </div>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
@@ -1169,11 +1169,10 @@
                             <p style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">1.34x player speed. Ignores hiding spots unless it saw you hide. <strong>Hide.</strong></p>
                         </div>
                     </div>
-                    <p style="color: #718096; font-size: 0.85rem; margin: -0.75rem 0 1.5rem; font-style: italic;">Manor timing: 40 / 3 / 40 s.</p>
                     <div class="challenge-item">
                         <h4>Enemy AI</h4>
                         <p><strong>States:</strong> Patrol → Chase → Search (goes to last known point, waits 4 s) → Force Out → Grab → Carry → Lock. While grabbing and carrying, Verity chases no one - the window for others to run.</p>
-                        <p><strong>Senses:</strong> 15 m sight radius, 180° view, line-of-sight check every 0.2 s, 4 m close radius at any angle, 1 s memory.</p>
+                        <p><strong>Senses:</strong> sees far ahead in a wide cone, notices anyone close from any side, and keeps a short memory of you after you break line of sight.</p>
                         <p><strong>Kid-safe tuning:</strong> capture is a shoulder carry, not an attack; the Smiley is unlit so Verity always reads in the dark; kids' voices are quieter than Verity's.</p>
                     </div>
                     <div style="background: #f7fafc; padding: 2rem; border-radius: 8px;">
@@ -1206,7 +1205,7 @@
                     <div class="challenge-item">
                         <h4>2. Make the Chase Visible to the Player</h4>
                         <p><strong>Problem:</strong> In my tests Verity rarely chased the player: it went for the nearest visible target and caught bots off-screen.</p>
-                        <p><strong>Solution:</strong> If both are visible, target the hero at 65%; ignore unwitnessed bots at 75% (90% after the first capture); hold the decision for 6 s; 60% of patrol points are picked near the player.</p>
+                        <p><strong>Solution:</strong> Verity prioritizes the hero over bots, mostly ignores bots the player can't see, commits to a target for a few seconds and patrols closer to the player.</p>
                         <p><strong>Why:</strong> Fear comes from a chase the player sees, not from bots disappearing.</p>
                         <p><strong>Result:</strong> Playtest tension score 5.4 → 7.1 out of 10.</p>
                     </div>
@@ -1216,7 +1215,7 @@
                         <p><strong>Problem:</strong> First-time players won only 10% of runs, and many never saw a crowbar. By the 4th key part all bots were usually caged.</p>
                         <p><strong>Solution:</strong> The crowbar went from a HUD counter to an item in hand that opens the cage for everyone; 4 crowbars instead of 2; bots remember where they dropped a key part.</p>
                         <p><strong>Why:</strong> The end of a run should not stall on the last key part, and you should see who holds the crowbar.</p>
-                        <p><strong>Result:</strong> First-time win rate 10% → 35%.</p>
+                        <p><strong>Result:</strong> First-time win rate 10% → 30%.</p>
                     </div>
 
                     <div class="challenge-item">
@@ -1232,7 +1231,7 @@
                         <p><strong>Problem:</strong> ~31 FPS on the test phone, then 33 ms frame spikes.</p>
                         <p><strong>Solution:</strong> Frame pacing (Swappy); furniture baked into lightmaps instead of Light Probes, which restored static batching (1099 → 241 batches); occlusion culling and LODs in the Manor.</p>
                         <p><strong>Why:</strong> I rejected Render Scale 0.65 - the image quality loss was not worth it.</p>
-                        <p><strong>Result (Nothing A063):</strong> avg 58.5 → 60.1 FPS, 1% low 30 → 59.5; 0 frames over 33 ms out of 2,405. Manor GPU 16.1 → 13.0 ms.</p>
+                        <p><strong>Result (Nothing A063):</strong> avg 58.5 → 60.1 FPS, 1% low 30 → 59.5. Manor GPU 16.1 → 13.0 ms.</p>
                     </div>
                 </div>
 
@@ -1241,14 +1240,14 @@
 
                     <div class="challenge-item">
                         <h4>School (Main Map)</h4>
-                        <p>44×44 m, 2 floors, 19 rooms around a 4.6 m ring corridor, ramps instead of stairs. Geometry simplified from the Dead by Daylight school.</p>
-                        <p>Built with an editor generator from my rules (max 2 rooms in a chain, 1 dead end), then hand-edited. 32 hiding spots (15 lockers, 17 desks). Key parts: 5 of 10 points, ≥8 m apart, ≥1 per floor - checked over 20,000 simulated spawns.</p>
+                        <p>2 floors, 19 rooms around a ring corridor, ramps instead of stairs; layout simplified from the Dead by Daylight school.</p>
+                        <p>Built with an editor generator from my rules, then hand-edited. 32 hiding spots; key part spawns checked over 20,000 simulated runs.</p>
                     </div>
 
                     <div class="challenge-item">
                         <h4>Manor (Second Map)</h4>
-                        <p>House, basement, 70×70 m hedge garden and front yard. A secret crouch-only crawlspace (fireplace ↔ basement, 17.1 m) that the Monster and bots cannot follow.</p>
-                        <p>49 hiding spots, 14 key zones with 28 candidate points. A validator runs 109 checks (reachability, path widths, loops, distance to cover); my 571 hand edits survive regeneration.</p>
+                        <p>House, basement, hedge garden and front yard, plus a secret crouch-only crawlspace the Monster and bots cannot follow.</p>
+                        <p>49 hiding spots; a validator with 109 checks keeps my hand edits intact on regeneration.</p>
                     </div>
 
                     <div style="margin-top: 1.5rem;">
@@ -1303,7 +1302,7 @@
                     <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">How I Worked: Solo, AI-Assisted</h3>
                     <div style="background: #f7fafc; padding: 1.5rem 2rem; border-radius: 8px; border-left: 4px solid #805ad5;">
                         <p style="color: #4a5568; line-height: 1.7; margin-bottom: 1rem;">
-                            I worked as designer and producer of an AI team. <strong>Claude Code</strong> wrote the code (~42k lines of C#, 146 commits) from my tasks; art was produced in <strong>Codex / Claude Code</strong> through my concept → Blender → Unity pipeline; voices in Fish Audio.
+                            Code and art were produced with AI tools (<strong>Claude Code</strong>, <strong>Codex</strong>) from my task specs. I owned design, task breakdown, acceptance and all on-device testing.
                         </p>
                         <p style="color: #4a5568; line-height: 1.7;">
                             <strong>Mine:</strong> market research and 3 synopses, game and level design, enemy and bot AI design and tuning, UX, task breakdown and acceptance, hand-editing maps in the Unity editor, all on-device playtests, and handling publisher feedback.
@@ -1334,21 +1333,9 @@
                             <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
                             Delivered a first playable in 12 days and a feedback build 2 days later
                         </li>
-                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
-                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
-                            Set kid-safe constraints: no blood or scares, no paywalls or loot boxes, non-violent capture
-                        </li>
-                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
-                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
-                            Drove Android performance from ~31 to 60 FPS with an on-device benchmark (60+ A/B configurations)
-                        </li>
-                        <li style="color: #4a5568; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
-                            <span style="position: absolute; left: 0; color: #2d3748; font-weight: bold;">✓</span>
-                            Wrote the design core and rules document that steered the AI agents
-                        </li>
                     </ul>
                     <p style="color: #718096; font-size: 0.85rem; margin-top: 1.5rem; font-style: italic;">
-                        Verity (character and name) is third-party, by ThatMob, required by the brief; the models are my interpretation. Unofficial fan game. Music: Epidemic Sound (licensed).
+                        Music: Epidemic Sound (licensed).
                     </p>
                 </div>
 
