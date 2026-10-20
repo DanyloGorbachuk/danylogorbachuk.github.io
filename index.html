@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danylo Gorbachuk - Game Designer Portfolio</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="preload" as="image" href="assets/images/escapeverity/danylo-gorbachuk-escapeverity-card.webp" fetchpriority="high">
     <style>
         * {
             margin: 0;
@@ -136,6 +140,62 @@
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
+        }
+
+        .project-card:focus-visible {
+            outline: 3px solid #3182ce;
+            outline-offset: 3px;
+        }
+
+        /* YouTube thumbnail placeholder, the player loads on click */
+        .yt-lite {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            margin: 0 auto;
+            overflow: hidden;
+            background: #000;
+            cursor: pointer;
+        }
+
+        .yt-lite img,
+        .yt-lite iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            object-fit: cover;
+        }
+
+        .yt-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 68px;
+            height: 48px;
+            transform: translate(-50%, -50%);
+            border: 0;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.75);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .yt-play::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 54%;
+            transform: translate(-50%, -50%);
+            border-style: solid;
+            border-width: 10px 0 10px 18px;
+            border-color: transparent transparent transparent white;
+        }
+
+        .yt-lite:hover .yt-play,
+        .yt-play:focus-visible {
+            background: #e53e3e;
         }
 
         .project-card:hover {
@@ -991,7 +1051,7 @@
             <div class="content-card">
                 <h2 class="section-title">Personal Projects</h2>
                 <div class="portfolio-grid">
-                    <div class="project-card" data-project="escapeverity">
+                    <div class="project-card" data-project="escapeverity" tabindex="0" role="link" aria-label="Escape.Verity">
                         <div class="project-image" style="background: url('assets/images/escapeverity/danylo-gorbachuk-escapeverity-card.webp') center/cover;">
                             <div class="project-title" style="background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 8px;">ESCAPE<br>VERITY</div>
                             <div class="project-overlay">
@@ -1001,7 +1061,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-card" data-project="apocalypse1866">
+                    <div class="project-card" data-project="apocalypse1866" tabindex="0" role="link" aria-label="Apocalypse 1866">
                         <div class="project-image" style="background: url('assets/images/apocalypse/danylo-gorbachuk-apocalypse1866-card.png') center/cover;">
                             <div class="project-overlay">
                                 <p class="project-description">
@@ -1010,7 +1070,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-card" data-project="grimhold">
+                    <div class="project-card" data-project="grimhold" tabindex="0" role="link" aria-label="Grimhold Escape">
                         <div class="project-image" style="background: url('assets/images/grimhold/danylo-gorbachuk-grimhold-card.webp') center/cover;">
                             <div class="project-title" style="background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 8px;">GRIMHOLD<br>ESCAPE</div>
                             <div class="project-overlay">
@@ -1020,7 +1080,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-card" data-project="cryostream">
+                    <div class="project-card" data-project="cryostream" tabindex="0" role="link" aria-label="Cryostream Facility">
                         <div class="project-image" style="background: url('assets/images/cryostream/danylo-gorbachuk-cryostream-card.webp') center/cover;">
                             <div class="project-title" style="background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 8px;">CRYOSTREAM<br>FACILITY</div>
                             <div class="project-overlay">
@@ -1030,7 +1090,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-card" data-project="sagevsslime">
+                    <div class="project-card" data-project="sagevsslime" tabindex="0" role="link" aria-label="Sage vs Slime">
                         <div class="project-image" style="background: url('assets/images/sagevsslime/danylo-gorbachuk-sagevsslime-card.png') center/cover;">
                             <div class="project-overlay">
                                 <p class="project-description">
@@ -1039,7 +1099,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-card" data-project="fuse">
+                    <div class="project-card" data-project="fuse" tabindex="0" role="link" aria-label="Fuse">
                         <div class="project-image" style="background: url('assets/images/fuse/danylo-gorbachuk-fuse-card.png') center/cover;">
                             <div class="project-title" style="background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 8px;">FUSE</div>
                             <div class="project-overlay">
@@ -1066,18 +1126,10 @@
                 </div>
 
                 <div style="text-align: center; margin: 3rem 0;">
-                    <iframe
-                        width="100%"
-                        height="450"
-                        style="max-width: 900px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);"
-                        src="https://www.youtube.com/embed/_h4eelztOjY"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        title="Escape.Verity Demo"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        loading="lazy">
-                    </iframe>
+                    <div class="yt-lite" data-id="_h4eelztOjY" data-title="Escape.Verity Demo" style="max-width: 900px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+                        <img src="https://i.ytimg.com/vi/_h4eelztOjY/hqdefault.jpg" alt="Escape.Verity Demo" loading="lazy">
+                        <button class="yt-play" type="button" aria-label="Play video: Escape.Verity Demo"></button>
+                    </div>
                     <p style="font-size: 0.9rem; color: #666; text-align: center; margin-top: 1rem; font-style: italic;">
                         Build demo sent to the publisher. The Verity character is third-party (by ThatMob), required by the brief.
                     </p>
@@ -1239,20 +1291,7 @@
                     <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Level Design</h3>
 
                     <div class="challenge-item">
-                        <h4>School (Main Map)</h4>
-                        <p>2 floors, 19 rooms around a ring corridor, ramps instead of stairs; layout simplified from the Dead by Daylight school.</p>
-                        <p>Built with an editor generator from my rules, then hand-edited. 48 hiding spots; key part spawns checked over 20,000 simulated runs.</p>
-                    </div>
-
-                    <div style="margin: 1.5rem 0;">
-                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-plan.webp" alt="School level plan: two floors, Verity patrol, hiding spots, key part and crowbar spawn points" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-plan.webp')" style="width: 100%; max-width: 900px; height: auto; border-radius: 8px; cursor: pointer; display: block; margin: 0 auto;">
-                        <p style="color: #718096; font-size: 0.85rem; text-align: center; margin-top: 0.75rem; font-style: italic;">
-                            School level plan: Verity patrol, hiding spots, key part and crowbar spawn points.
-                        </p>
-                    </div>
-
-                    <div class="challenge-item">
-                        <h4>Manor (Second Map)</h4>
+                        <h4>Manor (Main Map)</h4>
                         <p>House, basement, hedge garden and front yard, plus a secret crouch-only crawlspace the Monster and bots cannot follow.</p>
                         <p>49 hiding spots; a validator with 109 checks keeps my hand edits intact on regeneration.</p>
                     </div>
@@ -1263,6 +1302,19 @@
                     <p style="color: #718096; font-size: 0.85rem; text-align: center; margin-top: 0.75rem; font-style: italic;">
                         Manor level plan: house, garden, basement, secret tunnel and Verity patrol.
                     </p>
+
+                    <div class="challenge-item">
+                        <h4>School (MVP Map)</h4>
+                        <p>2 floors, 19 rooms around a ring corridor, ramps instead of stairs; layout simplified from the Dead by Daylight school.</p>
+                        <p>Built with an editor generator from my rules, then hand-edited. 48 hiding spots; key part spawns checked over 20,000 simulated runs.</p>
+                    </div>
+
+                    <div style="margin: 1.5rem 0;">
+                        <img src="assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-plan.webp" alt="School level plan: two floors, Verity patrol, hiding spots, key part and crowbar spawn points" loading="lazy" onclick="openLightbox('assets/images/escapeverity/danylo-gorbachuk-escapeverity-school-plan.webp')" style="width: 100%; max-width: 900px; height: auto; border-radius: 8px; cursor: pointer; display: block; margin: 0 auto;">
+                        <p style="color: #718096; font-size: 0.85rem; text-align: center; margin-top: 0.75rem; font-style: italic;">
+                            School level plan: Verity patrol, hiding spots, key part and crowbar spawn points.
+                        </p>
+                    </div>
 
                     <h4 style="color: #2d3748; font-weight: 700; margin: 2rem 0 1rem;">Atmosphere Pass After Publisher Feedback</h4>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
@@ -1366,17 +1418,10 @@
                 </div>
 
                 <div style="text-align: center; margin: 3rem 0;">
-                    <iframe 
-                        width="100%" 
-                        height="450"
-                        style="max-width: 800px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);"
-                        src="https://www.youtube.com/embed/i-pqGTyJ_vQ"
-                        title="Apocalypse 1866 Gameplay Demonstration"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        loading="lazy">
-                    </iframe>
+                    <div class="yt-lite" data-id="i-pqGTyJ_vQ" data-title="Apocalypse 1866 Gameplay Demonstration" style="max-width: 800px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+                        <img src="https://i.ytimg.com/vi/i-pqGTyJ_vQ/hqdefault.jpg" alt="Apocalypse 1866 Gameplay Demonstration" loading="lazy">
+                        <button class="yt-play" type="button" aria-label="Play video: Apocalypse 1866 Gameplay Demonstration"></button>
+                    </div>
                     <p style="font-size: 0.9rem; color: #666; text-align: center; margin-top: 1rem; font-style: italic;">
                         Gameplay demonstration showcasing final mechanics, level design, and survival systems in action
                     </p>
@@ -1426,7 +1471,7 @@
                         <div style="background: #f7fafc; padding: 1.5rem; border-radius: 8px;">
                             <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Initial Blockout Phase</h4>
                             <video preload="none" 
-                                autoplay 
+                                data-autoplay 
                                 loop 
                                 muted 
                                 playsinline
@@ -1441,7 +1486,7 @@
                         <div style="background: #f7fafc; padding: 1.5rem; border-radius: 8px;">
                             <h4 style="color: #2d3748; font-weight: 700; margin-bottom: 1rem;">Final Implementation</h4>
                             <video preload="none" 
-                                autoplay 
+                                data-autoplay 
                                 loop 
                                 muted 
                                 playsinline
@@ -1459,7 +1504,7 @@
                         <div style="display: flex; align-items: center; gap: 2rem; background: #f7fafc; padding: 1.5rem; border-radius: 8px;">
                             <div style="flex: 1;">
                                 <video preload="none" 
-                                    autoplay 
+                                    data-autoplay 
                                     loop 
                                     muted 
                                     playsinline
@@ -1473,7 +1518,7 @@
                             
                             <div style="flex: 1;">
                                 <video preload="none" 
-                                    autoplay 
+                                    data-autoplay 
                                     loop 
                                     muted 
                                     playsinline
@@ -1736,17 +1781,10 @@
                 </div>
 
                 <div style="text-align: center; margin: 3rem 0;">
-                    <iframe 
-                        width="100%" 
-                        height="450"
-                        style="max-width: 800px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);"
-                        src="https://www.youtube.com/embed/7Ettwo-1lTk"
-                        title="Grimhold Escape Gameplay Demonstration"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        loading="lazy">
-                    </iframe>
+                    <div class="yt-lite" data-id="7Ettwo-1lTk" data-title="Grimhold Escape Gameplay Demonstration" style="max-width: 800px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+                        <img src="https://i.ytimg.com/vi/7Ettwo-1lTk/hqdefault.jpg" alt="Grimhold Escape Gameplay Demonstration" loading="lazy">
+                        <button class="yt-play" type="button" aria-label="Play video: Grimhold Escape Gameplay Demonstration"></button>
+                    </div>
                     <p style="font-size: 0.9rem; color: #666; text-align: center; margin-top: 1rem; font-style: italic;">
                         Gameplay demonstration showcasing stealth mechanics, lockpicking system, and multiple escape routes
                     </p>
@@ -1800,7 +1838,7 @@
                     
                     <div style="background: #f7fafc; padding: 2rem; border-radius: 8px; margin: 2rem 0;">
                         <video preload="none" 
-                            autoplay 
+                            data-autoplay 
                             loop 
                             muted 
                             playsinline
@@ -2069,17 +2107,10 @@
 
                     <div style="margin: 2rem 0;">
                         <h4 style="color: #2d3748; font-weight: 600; margin-bottom: 1rem;">Gameplay Highlights</h4>
-                        <iframe 
-                            width="100%" 
-                            height="450"
-                            style="max-width: 900px; border-radius: 8px;"
-                            src="https://www.youtube.com/embed/GzYZBVD3NRY"
-                            title="Cryostream Facility Gameplay Highlights"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen
-                            loading="lazy">
-                        </iframe>
+                        <div class="yt-lite" data-id="GzYZBVD3NRY" data-title="Cryostream Facility Gameplay Highlights" style="max-width: 900px; border-radius: 8px;">
+                            <img src="https://i.ytimg.com/vi/GzYZBVD3NRY/hqdefault.jpg" alt="Cryostream Facility Gameplay Highlights" loading="lazy">
+                            <button class="yt-play" type="button" aria-label="Play video: Cryostream Facility Gameplay Highlights"></button>
+                        </div>
                     </div>
                 </div>
 
@@ -2135,11 +2166,11 @@
                     <div style="margin: 2rem 0; text-align: center;">
                         <h4 style="color: #2d3748; font-weight: 600; margin-bottom: 1rem;">Water Mechanics Demonstration</h4>
                         <video preload="none" 
-                            autoplay
+                            data-autoplay
                             muted
                             loop
                             style="width: 100%; max-width: 900px; height: auto; border-radius: 8px;"
-                            poster="assets/images/cryostream/danylo-gorbachuk-cryostream-mechanics-thumbnail.png"
+                            poster="assets/images/cryostream/danylo-gorbachuk-cryostream-mechanics-thumbnail.webp"
                             title="Cryostream Water Mechanics Testing">
                             <source src="assets/videos/cryostream/danylo-gorbachuk-cryostream-mechanics.mp4" type="video/mp4">
                             Your browser does not support the video tag.
@@ -2463,11 +2494,11 @@
                     <div style="margin: 2rem 0; text-align: center;">
                         <h4 style="color: #2d3748; font-weight: 600; margin-bottom: 1rem;">Original Platformer Gameplay</h4>
                         <video preload="none" 
-                            autoplay
+                            data-autoplay
                             muted
                             loop
                             style="width: 100%; max-width: 900px; height: auto; border-radius: 8px;"
-                            poster="assets/images/sagevsslime/danylo-gorbachuk-sagevsslime-platformer-thumbnail.png"
+                            poster="assets/images/sagevsslime/danylo-gorbachuk-sagevsslime-platformer-thumbnail.webp"
                             title="Sage vs Slime Platformer">
                             <source src="assets/videos/sagevsslime/danylo-gorbachuk-sagevsslime-platformer.mp4" type="video/mp4">
                             Your browser does not support the video tag.
@@ -2595,17 +2626,10 @@
                 </div>
 
                 <div style="text-align: center; margin: 3rem 0;">
-                    <iframe 
-                        width="100%" 
-                        height="450"
-                        style="max-width: 900px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);"
-                        src="https://www.youtube.com/embed/dSMFapLAkQM"
-                        title="Fuse Gameplay Demonstration"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        loading="lazy">
-                    </iframe>
+                    <div class="yt-lite" data-id="dSMFapLAkQM" data-title="Fuse Gameplay Demonstration" style="max-width: 900px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+                        <img src="https://i.ytimg.com/vi/dSMFapLAkQM/hqdefault.jpg" alt="Fuse Gameplay Demonstration" loading="lazy">
+                        <button class="yt-play" type="button" aria-label="Play video: Fuse Gameplay Demonstration"></button>
+                    </div>
                     <p style="font-size: 0.9rem; color: #666; text-align: center; margin-top: 1rem; font-style: italic;">
                         Gameplay demonstration showcasing turn-based puzzle mechanics
                     </p>
@@ -2955,7 +2979,7 @@
                 <div class="about-grid">
                     <div class="profile-section">
                         <div class="profile-image">
-                            <img src="assets/images/danylo-gorbachuk-headshot.webp" alt="Danylo Gorbachuk - Game Designer" loading="eager">
+                            <img src="assets/images/danylo-gorbachuk-headshot.webp" alt="Danylo Gorbachuk - Game Designer" loading="lazy">
                         </div>
                         <div class="profile-details">
                             <div class="profile-item">
@@ -3060,89 +3084,87 @@
         </div>
 
         <div class="footer-copyright">
-            <p>&copy; 2024 Danylo Gorbachuk. All rights reserved.</p>
+            <p>&copy; 2026 Danylo Gorbachuk. All rights reserved.</p>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Navigation functionality
         document.addEventListener('DOMContentLoaded', function() {
             const navButtons = document.querySelectorAll('.nav-btn');
             const sections = document.querySelectorAll('.section');
 
+            // The URL hash drives navigation: browser Back works and project pages can be linked directly
+            function showSection(id) {
+                const target = id && document.getElementById(id);
+                if (!target || !target.classList.contains('section')) id = 'portfolio';
+                sections.forEach(section => section.classList.remove('active'));
+                navButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-section') === id));
+                document.getElementById(id).classList.add('active');
+            }
+
+            function navigate(id) {
+                if (location.hash === '#' + id) return;
+                location.hash = id;
+            }
+
+            window.addEventListener('hashchange', function() {
+                showSection(location.hash.slice(1));
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            if (location.hash) {
+                showSection(location.hash.slice(1));
+                window.scrollTo(0, 0);
+            }
+
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const targetSection = this.getAttribute('data-section');
-                    
-                    // Remove active class from all buttons and sections
-                    navButtons.forEach(btn => btn.classList.remove('active'));
-                    sections.forEach(section => section.classList.remove('active'));
-                    
-                    // Add active class to clicked button and target section
-                    this.classList.add('active');
-                    document.getElementById(targetSection).classList.add('active');
+                    navigate(this.getAttribute('data-section'));
                 });
             });
 
-            // Add click handlers for project cards
+            // Project cards open on click, Enter or Space
             document.querySelectorAll('.project-card').forEach(card => {
                 card.addEventListener('click', function() {
-                    const projectId = this.getAttribute('data-project');
-                    
-                    // Hide all sections
-                    sections.forEach(section => section.classList.remove('active'));
-                    navButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Show the selected project page
-                    if (projectId === 'escapeverity') {
-                        document.getElementById('escapeverity').classList.add('active');
-                    } else if (projectId === 'apocalypse1866') {
-                        document.getElementById('apocalypse1866').classList.add('active');
-                    } else if (projectId === 'grimhold') {
-                        document.getElementById('grimhold').classList.add('active');
-                    } else if (projectId === 'cryostream') {
-                        document.getElementById('cryostream').classList.add('active');
-                    } else if (projectId === 'sagevsslime') {
-                        document.getElementById('sagevsslime').classList.add('active');
-                    } else if (projectId === 'fuse') {
-                        document.getElementById('fuse').classList.add('active');
+                    navigate(this.getAttribute('data-project'));
+                });
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        navigate(this.getAttribute('data-project'));
                     }
-                    
-                    // Scroll to top
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             });
 
             // Global navigation functions
-            window.showPortfolio = function() {
-                sections.forEach(section => section.classList.remove('active'));
-                navButtons.forEach(btn => btn.classList.remove('active'));
-                
-                document.getElementById('portfolio').classList.add('active');
-                document.querySelector('[data-section="portfolio"]').classList.add('active');
-                
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            };
+            window.showPortfolio = function() { navigate('portfolio'); };
+            window.showSkills = function() { navigate('skills'); };
+            window.showAbout = function() { navigate('about'); };
 
-            window.showSkills = function() {
-                sections.forEach(section => section.classList.remove('active'));
-                navButtons.forEach(btn => btn.classList.remove('active'));
-                
-                document.getElementById('skills').classList.add('active');
-                document.querySelector('[data-section="skills"]').classList.add('active');
-                
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            };
+            // Demo videos load and play only while visible on screen
+            const videoObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.play().catch(() => {});
+                    } else {
+                        entry.target.pause();
+                    }
+                });
+            }, { threshold: 0.5 });
+            document.querySelectorAll('video[data-autoplay]').forEach(video => videoObserver.observe(video));
 
-            window.showAbout = function() {
-                sections.forEach(section => section.classList.remove('active'));
-                navButtons.forEach(btn => btn.classList.remove('active'));
-                
-                document.getElementById('about').classList.add('active');
-                document.querySelector('[data-section="about"]').classList.add('active');
-                
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            };
+            // YouTube: thumbnail first, the player loads on click
+            document.querySelectorAll('.yt-lite').forEach(box => {
+                box.addEventListener('click', function() {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1';
+                    iframe.title = box.dataset.title;
+                    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                    iframe.allowFullscreen = true;
+                    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+                    box.replaceChildren(iframe);
+                }, { once: true });
+            });
 
             // Copy email to clipboard function
             window.copyEmail = function() {
